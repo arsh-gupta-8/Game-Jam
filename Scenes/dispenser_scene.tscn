@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://46wuoswhp2gk"]
+
+[ext_resource type="Script" uid="uid://x832plq0glyd" path="res://Scripts/fish_amount.gd" id="1_a8p54"]
+
+[node name="DispenserScene" type="Node2D" unique_id=409662265]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2141106499]
+
+[node name="Background" type="ColorRect" parent="TextureRect" unique_id=150044044]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0, 0.23529412, 0.29411766, 1)
+
+[node name="Dispenser" type="ColorRect" parent="TextureRect" unique_id=668919992]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 335.0
+offset_right = 692.0
+offset_bottom = 406.0
+color = Color(0, 0.078431375, 0.14509805, 1)
+
+[node name="FishAmount" type="Label" parent="." unique_id=2127275988]
+offset_left = 435.0
+offset_top = 251.0
+offset_right = 570.0
+offset_bottom = 274.0
+scale = Vector2(2, 2)
+text = "   Fish Remaining."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_a8p54")

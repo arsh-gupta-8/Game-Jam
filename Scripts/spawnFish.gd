@@ -1,7 +1,7 @@
 extends Node2D
 
 var speed = 250
-var catchCDLength: int = 5
+var catchCDLength: int = 1
 var catchCD: Timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -11,8 +11,7 @@ func _ready() -> void:
 	spawnTimer.wait_time = 3.0
 	spawnTimer.timeout.connect(spawnNewFish)
 	add_child(spawnTimer)
-	
-	catchCD = Timer.new()
+
 	catchCD.wait_time = catchCDLength
 	catchCD.one_shot = true
 	add_child(catchCD)
