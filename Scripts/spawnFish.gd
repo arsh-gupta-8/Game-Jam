@@ -1,23 +1,34 @@
 extends Node2D
 
+var speed = 250
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawnNewFish()
-	pass # Replace with function body.
+	var spawnTimer = Timer.new()
+	spawnTimer.autostart = true
+	spawnTimer.wait_time = 3.0
+	spawnTimer.timeout.connect(spawnNewFish)
+	add_child(spawnTimer)
+
 
 func spawnNewFish():
 	print("Spawned a fish!")
 	
-	var fish = Sprite2D.new()
+	var fish = CharacterBody2D.new()
+	var fish_script = load("res://Scripts/fishConstraint.gd")
+	fish.set_script(fish_script)
 	
-	# Making the fish a circle for now
+	var fishBody = Sprite2D.new()
+	
+	# Making the fish a template for now
 	var fishPlaceholder = GradientTexture2D.new()
 	fishPlaceholder.width = 64
 	fishPlaceholder.height = 64
-	fishPlaceholder.fill = GradientTexture2D.FILL_RADIAL
 	
-	fish.texture = fishPlaceholder
+	fishBody.texture = fishPlaceholder
+	
+	fish.add_child(fishBody)
+	
 	add_child(fish)
 	var screenSize = get_viewport_rect().size
 	var centerPosition = screenSize / 2.0
@@ -34,20 +45,12 @@ func spawnNewFish():
 		spawnPos = Vector2(screenSize.x, randi_range(0, screenSize.y))
 	
 	var directionVector = centerPosition-spawnPos
-	var targetPosition = spawnPos+2*directionVector
 	fish.global_position = spawnPos
 	
-	var fishTween = create_tween()
-	var duration = 4.0
-	
-	fishTween.tween_property(fish, "global_position", targetPosition, duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	fishTween.tween_callback(fish.queue_free)
+	var setVelocity = directionVector.normalized() * speed
+	fish.velocity = setVelocity
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var spawnTimer = Timer.new()
-	spawnTimer.autostart = true
-	spawnTimer.wait_time = 3.0
-	spawnTimer.timeout.connect(spawnNewFish)
-	add_child(spawnTimer)
+	pass
 	
