@@ -14,6 +14,10 @@ config/name="Game-Jam"
 run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+Global="*uid://bay272a6kitug"
+
 [display]
 
 window/stretch/mode="canvas_items"

@@ -52,5 +52,9 @@ func spawnNewFish():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	
+	if Input.is_action_just_pressed("ui_accept"):
+		for child in get_children():
+			if child is CharacterBody2D:
+				Global.fishCaught.append("New Fish")
+				child.queue_free()
+		print(Global.fishCaught)
