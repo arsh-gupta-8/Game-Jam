@@ -3,6 +3,7 @@ extends Node
 var fuel: float = 1000
 var depletionRate: int = 10
 var fishCaught: Array = []
+var heldFish: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
