@@ -31,7 +31,7 @@ func spawnNewFish():
 	
 	add_child(fish)
 	var screenSize = get_viewport_rect().size
-	var centerPosition = screenSize / 2.0
+	var centerPosition = Vector2(randf_range(0.25*screenSize.x, 0.75*screenSize.x), randf_range(0.25*screenSize.y, 0.75*screenSize.y))
 	
 	var side = randi() % 4
 	var spawnPos = Vector2.ZERO

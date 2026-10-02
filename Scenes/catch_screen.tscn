@@ -2,11 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b51pfkqn00bkk" path="res://Scripts/spawnFish.gd" id="1_ic414"]
 
-[sub_resource type="Gradient" id="Gradient_ic414"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ooug5"]
-gradient = SubResource("Gradient_ic414")
-
 [node name="CatchScreen" type="Node2D" unique_id=802792861]
 script = ExtResource("1_ic414")
 
@@ -17,8 +12,3 @@ layout_mode = 0
 offset_right = 1150.0
 offset_bottom = 648.0
 color = Color(0, 0.22689998, 0.5404438, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=211067818]
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=580115135]
-texture = SubResource("GradientTexture2D_ooug5")
