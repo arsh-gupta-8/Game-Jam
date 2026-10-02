@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://7a1xcyv0ikjo"]
+
+[ext_resource type="PackedScene" uid="uid://dawwflgmt5uid" path="res://Scenes/catch_screen.tscn" id="1_qxrlw"]
+[ext_resource type="Script" uid="uid://b51pfkqn00bkk" path="res://Scripts/spawnFish.gd" id="2_wrm1d"]
+
+[node name="Game" type="Node2D" unique_id=377177155]
+
+[node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("1_qxrlw")]
+script = ExtResource("2_wrm1d")
