@@ -1,6 +1,8 @@
 extends Node2D
 
 var speed = 250
+var catchCDLength: int = 5
+var catchCD: Timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +11,11 @@ func _ready() -> void:
 	spawnTimer.wait_time = 3.0
 	spawnTimer.timeout.connect(spawnNewFish)
 	add_child(spawnTimer)
+	
+	catchCD = Timer.new()
+	catchCD.wait_time = catchCDLength
+	catchCD.one_shot = true
+	add_child(catchCD)
 
 
 func spawnNewFish():
@@ -52,9 +59,10 @@ func spawnNewFish():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and catchCD.time_left <= 0:
 		for child in get_children():
 			if child is CharacterBody2D:
 				Global.fishCaught.append("New Fish")
 				child.queue_free()
+		catchCD.start()
 		print(Global.fishCaught)
