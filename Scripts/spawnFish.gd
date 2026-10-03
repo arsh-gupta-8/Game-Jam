@@ -45,10 +45,10 @@ func spawnNewFish():
 	fish.set_script(fish_script)
 
 	var fishBody = Sprite2D.new()
-	fishBody.rotate(randf_range(0, TAU))
 	fishBody.scale.x = 0.3
 	fishBody.scale.y = 0.3
 	fishBody.texture = allFish.pick_random()
+	fishBody.modulate = Color(0.537, 0.745, 0.992, 0.902) 
 	fish.add_child(fishBody)
 
 	add_child(fish)
@@ -60,6 +60,9 @@ func spawnNewFish():
 	var spawnPos = catch_center + offset_vector
 
 	var directionVector = centerPosition - spawnPos
+	if directionVector.angle() > -PI/2 and directionVector.angle() < PI/2:
+		fishBody.flip_v = true
+	fishBody.rotate(directionVector.angle()+PI)
 	fish.global_position = spawnPos
 
 	var setVelocity = directionVector.normalized() * speed
