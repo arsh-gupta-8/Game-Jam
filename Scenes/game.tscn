@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c66xibm37tehp" path="res://Scenes/other_scene.tscn" id="6_v158k"]
 [ext_resource type="PackedScene" uid="uid://bb764aojp2i6a" path="res://Scenes/menu.tscn" id="7_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://b3tnpivhmwplg" path="res://Scenes/lose_scene.tscn" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://bbo2eow25784t" path="res://Scripts/pause_menu.gd" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dy04m83cninet" path="res://Scenes/win_scene.tscn" id="9_ldgsr"]
 
 [node name="Game" type="Node2D" unique_id=377177155]
@@ -25,3 +26,48 @@ script = ExtResource("1_3dryh")
 [node name="WinScene" parent="." unique_id=810444533 instance=ExtResource("9_ldgsr")]
 
 [node name="Menu" parent="." unique_id=1044301759 instance=ExtResource("7_h4fw4")]
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2041336277]
+process_mode = 3
+layer = 10
+visible = false
+script = ExtResource("9_h4fw4")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=365607558]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1488185631]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = -311.0
+offset_right = 388.78003
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused" type="Label" parent="PauseMenu/VBoxContainer" unique_id=1500272637]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=327039565]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1840850999]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Menu"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1043289901]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Quit"

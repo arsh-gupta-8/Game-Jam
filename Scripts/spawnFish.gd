@@ -4,7 +4,7 @@ var speed = 250
 var catchCDLength: int = 1
 var catchCD: Timer = Timer.new()
 
-@export var catch_radius: float = 450.0   # change this one number
+@export var catch_radius: float = 450.0  
 var catch_center: Vector2
 
 

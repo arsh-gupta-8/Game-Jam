@@ -30,6 +30,7 @@ func _ready() -> void:
 		end_scene.visible = false
 		end_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	menu.visible = true
+	Global.draining = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -44,6 +45,7 @@ func start_game() -> void:
 	Global.heldFish = false
 	Global.fuel = 500
 	Global.draining = true
+	Global.fishCaught.clear()
 	in_menu = false
 	skip_frame = true
 	menu.visible = false
