@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://le7cv5ri5u65"
-path="res://.godot/imported/Water_Background.PNG-e3b572949dee54382fbda80985148852.ctex"
+uid="uid://cpi6ku7nupp4f"
+path="res://.godot/imported/FIN_logo.PNG-8e770953e48706c28184b54db4999f95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Water_Background.PNG"
-dest_files=["res://.godot/imported/Water_Background.PNG-e3b572949dee54382fbda80985148852.ctex"]
+source_file="res://Assets/Fish/FIN_logo.PNG"
+dest_files=["res://.godot/imported/FIN_logo.PNG-8e770953e48706c28184b54db4999f95.ctex"]
 
 [params]
 

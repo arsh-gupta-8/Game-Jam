@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bakamp5lra8i8"
-path="res://.godot/imported/Blinker-SemiBold.ttf-12fdbac80dcda19dabba9e5068a2707e.fontdata"
+uid="uid://bkxisat4d0agx"
+path="res://.godot/imported/Blinker-Black.ttf-9f5cd3665899c96d409a29b348912127.fontdata"
 
 [deps]
 
-source_file="res://Assets/Blinker-SemiBold.ttf"
-dest_files=["res://.godot/imported/Blinker-SemiBold.ttf-12fdbac80dcda19dabba9e5068a2707e.fontdata"]
+source_file="res://Assets/Fonts/Blinker-Black.ttf"
+dest_files=["res://.godot/imported/Blinker-Black.ttf-9f5cd3665899c96d409a29b348912127.fontdata"]
 
 [params]
 

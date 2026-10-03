@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0yq5c6nd5cpi"
-path="res://.godot/imported/Startscreen_ship.PNG-2e2861fbe4e7392565b82905b427bf08.ctex"
+uid="uid://db4c6fhoas02h"
+path="res://.godot/imported/Dock_border.PNG-81f08bf988a4e39279df815ec454ab71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Startscreen_ship.PNG"
-dest_files=["res://.godot/imported/Startscreen_ship.PNG-2e2861fbe4e7392565b82905b427bf08.ctex"]
+source_file="res://Assets/Dock_border.PNG"
+dest_files=["res://.godot/imported/Dock_border.PNG-81f08bf988a4e39279df815ec454ab71.ctex"]
 
 [params]
 

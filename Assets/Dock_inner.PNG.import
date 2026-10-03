@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m20anyx0q74t"
-path="res://.godot/imported/Startscreen_claw.PNG-72652489f867383b202de3907f086d29.ctex"
+uid="uid://dv51wu20aaq6r"
+path="res://.godot/imported/Dock_inner.PNG-6374e8fae3cdfdcd2fc4b7eb600e5eee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Startscreen_claw.PNG"
-dest_files=["res://.godot/imported/Startscreen_claw.PNG-72652489f867383b202de3907f086d29.ctex"]
+source_file="res://Assets/Dock_inner.PNG"
+dest_files=["res://.godot/imported/Dock_inner.PNG-6374e8fae3cdfdcd2fc4b7eb600e5eee.ctex"]
 
 [params]
 

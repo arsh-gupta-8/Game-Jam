@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://46wuoswhp2gk"]
 
 [ext_resource type="Script" uid="uid://x832plq0glyd" path="res://Scripts/fish_amount.gd" id="1_a8p54"]
+[ext_resource type="Texture2D" uid="uid://dv51wu20aaq6r" path="res://Assets/Dock_inner.PNG" id="2_7j6cx"]
+[ext_resource type="Texture2D" uid="uid://db4c6fhoas02h" path="res://Assets/Dock_border.PNG" id="3_xaq4a"]
 
 [node name="DispenserScene" type="Node2D" unique_id=409662265]
 
@@ -11,22 +13,6 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0.23529412, 0.29411766, 1)
-
-[node name="Dispenser" type="ColorRect" parent="TextureRect" unique_id=668919992]
-layout_mode = 0
-offset_left = 808.0
-offset_top = 555.0
-offset_right = 1063.0
-offset_bottom = 626.0
-color = Color(0, 0.078431375, 0.14509805, 1)
-
-[node name="ColorRect" type="ColorRect" parent="TextureRect/Dispenser" unique_id=1482202252]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 17.0
-offset_right = 241.0
-offset_bottom = 57.0
-color = Color(0, 0, 0.043137256, 1)
 
 [node name="FishAmount" type="Label" parent="." unique_id=2127275988]
 offset_left = 704.0
@@ -49,30 +35,40 @@ text = "Space to Collect"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ArrowRight" type="Polygon2D" parent="." unique_id=722161854]
+[node name="DockInner" type="Sprite2D" parent="." unique_id=2038468505]
+position = Vector2(960, 540)
+texture = ExtResource("2_7j6cx")
+
+[node name="DockOuter" type="Sprite2D" parent="." unique_id=1782270334]
+position = Vector2(960, 540)
+texture = ExtResource("3_xaq4a")
+
+[node name="ArrowRight" type="Polygon2D" parent="." unique_id=418478169]
+z_index = 6
 position = Vector2(1842, 468)
 polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
 
-[node name="D" type="Label" parent="ArrowRight" unique_id=917513481]
-offset_left = -43.0
-offset_top = 100.0
-offset_right = 68.0
-offset_bottom = 169.0
-theme_override_font_sizes/font_size = 50
-text = "D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ArrowLeft" type="Polygon2D" parent="." unique_id=1277731779]
-position = Vector2(39, 466)
+[node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=1917068320]
+position = Vector2(-1803, -2)
 polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
 
-[node name="A" type="Label" parent="ArrowLeft" unique_id=1914203093]
+[node name="A" type="Label" parent="ArrowRight/ArrowLeft" unique_id=604914388]
 offset_left = -31.0
 offset_top = 107.0
 offset_right = 80.0
 offset_bottom = 176.0
 theme_override_font_sizes/font_size = 50
 text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="D" type="Label" parent="ArrowRight" unique_id=1847864359]
+offset_left = -43.0
+offset_top = 100.0
+offset_right = 68.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 50
+text = "D"
 horizontal_alignment = 1
 vertical_alignment = 1

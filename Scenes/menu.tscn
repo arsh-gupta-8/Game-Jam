@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://boa5w0y6lwv2b" path="res://Assets/Startscreen_ship.PNG" id="2_wwsa2"]
 [ext_resource type="Texture2D" uid="uid://dom4ljatnmyyg" path="res://Assets/Startscreen_claw.PNG" id="3_jsrd8"]
 [ext_resource type="Texture2D" uid="uid://bpk7yjugog7qd" path="res://Assets/FIN_logo.PNG" id="4_wbdvm"]
-[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Blinker-SemiBold.ttf" id="4_wwsa2"]
+[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="4_wwsa2"]
 
 [sub_resource type="Animation" id="Animation_158mb"]
 length = 0.001
