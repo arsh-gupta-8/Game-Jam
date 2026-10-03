@@ -5,9 +5,12 @@ var depletionRate: int = 5
 var fishCaught: Array = []
 var heldFish: bool = false
 var draining: bool = false
-
+var depthStart: float = 950
+var depth: float = 950
+var depthDuration: float = 600  # seconds to sink to the bottom
 
 func _process(delta: float) -> void:
 	if draining:
 		fuel -= delta * depletionRate
-	print(fuel)
+		depth = max(depth - delta * depthStart / depthDuration, 0.0)
+		print(fuel)
