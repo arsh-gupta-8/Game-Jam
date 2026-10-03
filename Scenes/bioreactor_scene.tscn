@@ -11,16 +11,19 @@ offset_bottom = 648.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=237289105]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.6684028
+anchor_bottom = 0.68209875
+offset_right = 1150.0
+offset_bottom = 638.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=1431256831]
 modulate = Color(0, 0, 1, 1)
-offset_left = 352.00003
-offset_top = 246.00002
-offset_right = 436.71503
-offset_bottom = 269.87604
+offset_left = 737.0
+offset_top = 417.0
+offset_right = 1179.0
+offset_bottom = 547.0
 theme_override_font_sizes/font_size = 72
 text = "Bioreactor"

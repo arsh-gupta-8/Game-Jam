@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://7a1xcyv0ikjo"]
 
 [ext_resource type="Script" uid="uid://b686chc6xdthd" path="res://Scripts/switch_scenes.gd" id="1_3dryh"]
-[ext_resource type="PackedScene" uid="uid://dawwflgmt5uid" path="res://Scenes/window_scene.tscn" id="1_qxrlw"]
-[ext_resource type="Script" uid="uid://b51pfkqn00bkk" path="res://Scripts/spawnFish.gd" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://dqdr2n42wwf1s" path="res://Scenes/catch_screen.tscn" id="3_v158k"]
 [ext_resource type="PackedScene" uid="uid://46wuoswhp2gk" path="res://Scenes/dispenser_scene.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://2ysjtoirfqo2" path="res://Scenes/bioreactor_scene.tscn" id="5_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://c66xibm37tehp" path="res://Scenes/other_scene.tscn" id="6_v158k"]
@@ -15,9 +14,7 @@ script = ExtResource("1_3dryh")
 
 [node name="Menu" parent="." unique_id=1044301759 instance=ExtResource("7_h4fw4")]
 
-[node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("1_qxrlw")]
-visible = false
-script = ExtResource("2_wrm1d")
+[node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("3_v158k")]
 
 [node name="DispenserScene" parent="." unique_id=409662265 instance=ExtResource("3_wrm1d")]
 

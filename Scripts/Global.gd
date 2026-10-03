@@ -9,6 +9,7 @@ var depthStart: float = 950
 var depth: float = 950
 var depthDuration: float = 600  # seconds to sink to the bottom
 
+
 func _process(delta: float) -> void:
 	if draining:
 		fuel -= delta * depletionRate

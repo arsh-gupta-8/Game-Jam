@@ -6,15 +6,15 @@
 
 [node name="Background" type="ColorRect" parent="TextureRect" unique_id=440409075]
 layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 648.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0.23529412, 0.29411766, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1259819774]
-offset_left = 209.0
-offset_top = 243.0
-offset_right = 947.0
-offset_bottom = 408.0
+offset_left = 572.0
+offset_top = 415.0
+offset_right = 1310.0
+offset_bottom = 580.0
 theme_override_font_sizes/font_size = 38
 text = "The SSR-17 was never to be found again.
 
