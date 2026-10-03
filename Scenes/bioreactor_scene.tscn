@@ -4,6 +4,14 @@
 [ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="2_ednsk"]
 [ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="3_xncym"]
 [ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="4_bbxdo"]
+[ext_resource type="Texture2D" uid="uid://o5pn8keoxxhx" path="res://Assets/BioBackground.PNG" id="5_ajbqo"]
+[ext_resource type="Texture2D" uid="uid://sc74cpvqkoqm" path="res://Assets/BioBG.PNG" id="6_qwok5"]
+[ext_resource type="Texture2D" uid="uid://baxr8umj1epwa" path="res://Assets/BioLiquidBG.PNG" id="7_dpfwn"]
+[ext_resource type="Texture2D" uid="uid://dgbd7thxif0ay" path="res://Assets/BioLiquid.PNG" id="8_p8yca"]
+[ext_resource type="Texture2D" uid="uid://dy41ectnfi433" path="res://Assets/BioNotes.PNG" id="9_jhgdl"]
+[ext_resource type="Texture2D" uid="uid://du1v3tv10b3a3" path="res://Assets/BioWaste.PNG" id="10_7cacx"]
+[ext_resource type="Texture2D" uid="uid://b2uuffvim1ang" path="res://Assets/BioOutline.PNG" id="11_slch4"]
+[ext_resource type="Texture2D" uid="uid://n8xtxxq3hfq3" path="res://Assets/BioDoor.PNG" id="12_bcney"]
 
 [node name="BioreactorScene" type="Node2D" unique_id=1788749412]
 script = ExtResource("1_fh7p5")
@@ -22,15 +30,6 @@ offset_right = 1150.0
 offset_bottom = 638.0
 color = Color(0, 0.4745098, 1, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="." unique_id=1431256831]
-modulate = Color(0, 0, 1, 1)
-offset_left = 737.0
-offset_top = 417.0
-offset_right = 1179.0
-offset_bottom = 547.0
-theme_override_font_sizes/font_size = 72
-text = "Bioreactor"
 
 [node name="ArrowRight" type="Polygon2D" parent="." unique_id=858857521]
 z_index = 6
@@ -80,3 +79,35 @@ vertical_alignment = 1
 position = Vector2(-877, 498)
 scale = Vector2(0.23180078, 0.23180076)
 texture = ExtResource("4_bbxdo")
+
+[node name="BioBackground" type="Sprite2D" parent="." unique_id=997004595]
+position = Vector2(960, 540)
+texture = ExtResource("5_ajbqo")
+
+[node name="BioWasteBG" type="Sprite2D" parent="." unique_id=490281601]
+position = Vector2(960, 540)
+texture = ExtResource("6_qwok5")
+
+[node name="BioDepth" type="Sprite2D" parent="." unique_id=468013175]
+position = Vector2(957, 550)
+texture = ExtResource("7_dpfwn")
+
+[node name="BioLiquid" type="Sprite2D" parent="." unique_id=1621625764]
+position = Vector2(960, 540)
+texture = ExtResource("8_p8yca")
+
+[node name="BioNotes" type="Sprite2D" parent="." unique_id=45593129]
+position = Vector2(960, 540)
+texture = ExtResource("9_jhgdl")
+
+[node name="BioWaste" type="Sprite2D" parent="." unique_id=371005455]
+position = Vector2(960, 540)
+texture = ExtResource("10_7cacx")
+
+[node name="BioOutline" type="Sprite2D" parent="." unique_id=548902290]
+position = Vector2(960, 540)
+texture = ExtResource("11_slch4")
+
+[node name="BioDoor" type="Sprite2D" parent="." unique_id=1061095465]
+position = Vector2(960, 540)
+texture = ExtResource("12_bcney")

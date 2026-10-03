@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b3tnpivhmwplg" path="res://Scenes/lose_scene.tscn" id="8_h4fw4"]
 [ext_resource type="Script" uid="uid://bbo2eow25784t" path="res://Scripts/pause_menu.gd" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dy04m83cninet" path="res://Scenes/win_scene.tscn" id="9_ldgsr"]
+[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="10_ldgsr"]
 
 [sub_resource type="Gradient" id="Gradient_h4fw4"]
 offsets = PackedFloat32Array(0, 0.52427185, 1)
@@ -103,22 +104,26 @@ grow_vertical = 2
 
 [node name="Paused" type="Label" parent="PauseMenu/VBoxContainer" unique_id=1500272637]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
 theme_override_font_sizes/font_size = 100
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=327039565]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
 theme_override_font_sizes/font_size = 100
 text = "Resume"
 
 [node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1840850999]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
 theme_override_font_sizes/font_size = 100
 text = "Menu"
 
 [node name="QuitButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1043289901]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
 theme_override_font_sizes/font_size = 100
 text = "Quit"
 
