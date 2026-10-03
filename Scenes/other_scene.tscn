@@ -77,3 +77,31 @@ max_value = 1000.0
 fill_mode = 3
 show_percentage = false
 script = ExtResource("2_b5aw4")
+
+[node name="ArrowRight" type="Polygon2D" parent="." unique_id=2098824991]
+position = Vector2(1842, 468)
+polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
+
+[node name="D" type="Label" parent="ArrowRight" unique_id=1993662652]
+offset_left = -43.0
+offset_top = 100.0
+offset_right = 68.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 50
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArrowLeft" type="Polygon2D" parent="." unique_id=1248362780]
+position = Vector2(39, 466)
+polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
+
+[node name="A" type="Label" parent="ArrowLeft" unique_id=687092664]
+offset_left = -31.0
+offset_top = 107.0
+offset_right = 80.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 50
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -12,8 +12,6 @@
 [node name="Game" type="Node2D" unique_id=377177155]
 script = ExtResource("1_3dryh")
 
-[node name="Menu" parent="." unique_id=1044301759 instance=ExtResource("7_h4fw4")]
-
 [node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("3_v158k")]
 
 [node name="DispenserScene" parent="." unique_id=409662265 instance=ExtResource("3_wrm1d")]
@@ -25,3 +23,5 @@ script = ExtResource("1_3dryh")
 [node name="LoseScene" parent="." unique_id=2103556309 instance=ExtResource("8_h4fw4")]
 
 [node name="WinScene" parent="." unique_id=810444533 instance=ExtResource("9_ldgsr")]
+
+[node name="Menu" parent="." unique_id=1044301759 instance=ExtResource("7_h4fw4")]
