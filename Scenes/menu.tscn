@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bb764aojp2i6a"]
+
+[node name="Menu" type="Node2D" unique_id=1044301759]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1164555362]
+
+[node name="Background" type="ColorRect" parent="TextureRect" unique_id=599649133]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0, 0.23529412, 0.48235294, 1)
+
+[node name="Label" type="Label" parent="." unique_id=783905738]
+offset_left = 299.0
+offset_top = 497.0
+offset_right = 837.0
+offset_bottom = 566.0
+theme_override_font_sizes/font_size = 50
+text = "Press Any Key To Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1904213734]
+offset_left = 143.0
+offset_top = 108.0
+offset_right = 428.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 176
+text = "FIN"
+horizontal_alignment = 1
+vertical_alignment = 1

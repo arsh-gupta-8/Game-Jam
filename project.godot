@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game-Jam"
-run/main_scene="uid://2ysjtoirfqo2"
+run/main_scene="uid://7a1xcyv0ikjo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]

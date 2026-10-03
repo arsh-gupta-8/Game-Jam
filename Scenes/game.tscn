@@ -4,12 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://dawwflgmt5uid" path="res://Scenes/catch_screen.tscn" id="1_qxrlw"]
 [ext_resource type="Script" uid="uid://b51pfkqn00bkk" path="res://Scripts/spawnFish.gd" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://46wuoswhp2gk" path="res://Scenes/dispenser_scene.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://2ysjtoirfqo2" path="res://Scenes/bioreactor_scene.tscn" id="5_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://c66xibm37tehp" path="res://Scenes/other_scene.tscn" id="6_v158k"]
+[ext_resource type="PackedScene" uid="uid://bb764aojp2i6a" path="res://Scenes/menu.tscn" id="7_h4fw4"]
 
 [node name="Game" type="Node2D" unique_id=377177155]
 script = ExtResource("1_3dryh")
+
+[node name="Menu" parent="." unique_id=1044301759 instance=ExtResource("7_h4fw4")]
 
 [node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("1_qxrlw")]
 visible = false
 script = ExtResource("2_wrm1d")
 
 [node name="DispenserScene" parent="." unique_id=409662265 instance=ExtResource("3_wrm1d")]
+
+[node name="BioreactorScene" parent="." unique_id=1788749412 instance=ExtResource("5_1l0tm")]
+
+[node name="OtherScene" parent="." unique_id=1648236018 instance=ExtResource("6_v158k")]

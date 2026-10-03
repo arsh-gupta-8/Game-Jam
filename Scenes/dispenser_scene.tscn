@@ -20,13 +20,31 @@ offset_right = 692.0
 offset_bottom = 406.0
 color = Color(0, 0.078431375, 0.14509805, 1)
 
+[node name="ColorRect" type="ColorRect" parent="TextureRect/Dispenser" unique_id=1482202252]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 241.0
+offset_bottom = 57.0
+color = Color(0, 0, 0.043137256, 1)
+
 [node name="FishAmount" type="Label" parent="." unique_id=2127275988]
-offset_left = 435.0
-offset_top = 251.0
-offset_right = 570.0
-offset_bottom = 274.0
-scale = Vector2(2, 2)
+offset_left = 404.0
+offset_top = 240.0
+offset_right = 772.0
+offset_bottom = 301.0
+theme_override_font_sizes/font_size = 44
 text = "   Fish Remaining."
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_a8p54")
+
+[node name="FishAmount2" type="Label" parent="." unique_id=85177928]
+offset_left = 387.0
+offset_top = 542.0
+offset_right = 755.0
+offset_bottom = 603.0
+theme_override_font_sizes/font_size = 44
+text = "Space to Collect"
+horizontal_alignment = 1
+vertical_alignment = 1
