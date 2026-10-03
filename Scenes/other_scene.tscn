@@ -1,18 +1,5 @@
 [gd_scene format=3 uid="uid://c66xibm37tehp"]
 
-[ext_resource type="Script" uid="uid://b58ja5txmc50t" path="res://Scripts/fuel_bar.gd" id="1_m6aac"]
-[ext_resource type="Script" uid="uid://4my02y8t0m5o" path="res://Scripts/depth_meter.gd" id="2_b5aw4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5aw4"]
-bg_color = Color(0.9797464, 0.38257378, 0.09672696, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fim2g"]
-bg_color = Color(0.17446324, 0.6809374, 0.6738433, 1)
-
 [node name="OtherScene" type="Node2D" unique_id=409662265]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2141106499]
@@ -24,59 +11,6 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0.23529412, 0.29411766, 1)
-
-[node name="Label" type="Label" parent="." unique_id=2127275988]
-offset_left = 73.0
-offset_top = 835.0
-offset_right = 272.0
-offset_bottom = 888.0
-theme_override_font_sizes/font_size = 38
-text = "Fuel bar"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="." unique_id=1237380568]
-offset_left = 1579.0
-offset_top = 831.0
-offset_right = 1778.0
-offset_bottom = 884.0
-theme_override_font_sizes/font_size = 38
-text = "Depth"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FuelBar" type="ProgressBar" parent="." unique_id=1068586890]
-offset_left = 115.0
-offset_top = 106.0
-offset_right = 235.0
-offset_bottom = 806.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_b5aw4")
-max_value = 1000.0
-fill_mode = 3
-show_percentage = false
-script = ExtResource("1_m6aac")
-
-[node name="Label3" type="Label" parent="FuelBar" unique_id=1149709286]
-layout_mode = 0
-offset_left = 379.0
-offset_top = 69.0
-offset_right = 593.0
-offset_bottom = 122.0
-theme_override_font_sizes/font_size = 38
-text = "Insert tasks"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DepthMeter" type="ProgressBar" parent="." unique_id=1931239343]
-offset_left = 1631.0
-offset_top = 106.0
-offset_right = 1751.0
-offset_bottom = 806.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_fim2g")
-max_value = 1000.0
-fill_mode = 3
-show_percentage = false
-script = ExtResource("2_b5aw4")
 
 [node name="ArrowRight" type="Polygon2D" parent="." unique_id=2098824991]
 position = Vector2(1842, 468)

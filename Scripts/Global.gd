@@ -7,7 +7,7 @@ var heldFish: bool = false
 var draining: bool = false
 var depthStart: float = 950
 var depth: float = 950
-var depthDuration: float = 600  # seconds to sink to the bottom
+var depthDuration: float = 20  # seconds to sink to the bottom
 var current := 0
 
 func _process(delta: float) -> void:

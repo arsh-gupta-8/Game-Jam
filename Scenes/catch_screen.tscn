@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dqdr2n42wwf1s"]
 
 [ext_resource type="Script" uid="uid://b51pfkqn00bkk" path="res://Scripts/spawnFish.gd" id="1_ic414"]
+[ext_resource type="Texture2D" uid="uid://doo2m82d1l8gs" path="res://Assets/Water_Background.PNG" id="2_gbr0b"]
+[ext_resource type="Texture2D" uid="uid://76ocoe552e12" path="res://Assets/Fuel_meter.PNG" id="3_oe6do"]
+[ext_resource type="Script" uid="uid://b58ja5txmc50t" path="res://Scripts/fuel_bar.gd" id="4_v6mme"]
+[ext_resource type="Texture2D" uid="uid://df4h85iia3sh8" path="res://Assets/Depth_meter.PNG" id="5_755dy"]
+[ext_resource type="Texture2D" uid="uid://cn3qh1cw4eyiq" path="res://Assets/Window_overlay.PNG" id="6_igww2"]
+[ext_resource type="Script" uid="uid://4my02y8t0m5o" path="res://Scripts/depth_meter.gd" id="6_oe6do"]
 
 [node name="catch_screen" type="Node2D" unique_id=1950425289]
 script = ExtResource("1_ic414")
@@ -17,9 +23,43 @@ text = "'Space' to cast net"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="WaterBackground" type="Sprite2D" parent="." unique_id=1982111594]
+position = Vector2(960, 539.99994)
+scale = Vector2(0.7499999, 0.74999994)
+texture = ExtResource("2_gbr0b")
+
+[node name="FuelBar" type="Sprite2D" parent="." unique_id=708037503]
+position = Vector2(957, 538)
+texture = ExtResource("3_oe6do")
+script = ExtResource("4_v6mme")
+
+[node name="DepthBar" type="Sprite2D" parent="." unique_id=298730550]
+position = Vector2(960, 686.695)
+texture = ExtResource("5_755dy")
+script = ExtResource("6_oe6do")
+
+[node name="WindowOverlay" type="Sprite2D" parent="." unique_id=203017547]
+position = Vector2(960, 540)
+texture = ExtResource("6_igww2")
+
 [node name="ArrowRight" type="Polygon2D" parent="." unique_id=1400369880]
 position = Vector2(1842, 468)
 polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
+
+[node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=478597996]
+position = Vector2(-1803, -2)
+polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
+
+[node name="A" type="Label" parent="ArrowRight/ArrowLeft" unique_id=1524019364]
+offset_left = -31.0
+offset_top = 107.0
+offset_right = 80.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 50
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="D" type="Label" parent="ArrowRight" unique_id=401127774]
 offset_left = -43.0
@@ -28,19 +68,5 @@ offset_right = 68.0
 offset_bottom = 169.0
 theme_override_font_sizes/font_size = 50
 text = "D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ArrowLeft" type="Polygon2D" parent="." unique_id=478597996]
-position = Vector2(39, 466)
-polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
-
-[node name="A" type="Label" parent="ArrowLeft" unique_id=1524019364]
-offset_left = -31.0
-offset_top = 107.0
-offset_right = 80.0
-offset_bottom = 176.0
-theme_override_font_sizes/font_size = 50
-text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
