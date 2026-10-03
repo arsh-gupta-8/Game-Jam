@@ -10,6 +10,56 @@
 [ext_resource type="Script" uid="uid://bbo2eow25784t" path="res://Scripts/pause_menu.gd" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dy04m83cninet" path="res://Scenes/win_scene.tscn" id="9_ldgsr"]
 
+[sub_resource type="Gradient" id="Gradient_h4fw4"]
+offsets = PackedFloat32Array(0, 0.52427185, 1)
+colors = PackedColorArray(0, 0, 0, 0.03137255, 0, 0, 0, 0, 0.050980393, 0, 0, 0.45490196)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2pfo5"]
+gradient = SubResource("Gradient_h4fw4")
+width = 512
+height = 288
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_h4fw4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Edges:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.7019608)]
+}
+
+[sub_resource type="Animation" id="Animation_ldgsr"]
+resource_name = "pulse"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Edges:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.7019608), Color(1, 1, 1, 1), Color(1, 1, 1, 0.7019608)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5yvi"]
+_data = {
+&"RESET": SubResource("Animation_h4fw4"),
+&"pulse": SubResource("Animation_ldgsr")
+}
+
 [node name="Game" type="Node2D" unique_id=377177155]
 script = ExtResource("1_3dryh")
 
@@ -71,3 +121,25 @@ text = "Menu"
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Quit"
+
+[node name="Vignette" type="CanvasLayer" parent="." unique_id=1988027125]
+layer = 5
+
+[node name="Tint" type="ColorRect" parent="Vignette" unique_id=95160692]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0.09803922, 0.101960786, 0.14509805)
+
+[node name="Edges" type="TextureRect" parent="Vignette" unique_id=1897408997]
+modulate = Color(1, 1, 1, 0.7019608)
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_2pfo5")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Vignette" unique_id=861052712]
+libraries/ = SubResource("AnimationLibrary_o5yvi")
+autoplay = &"pulse"
