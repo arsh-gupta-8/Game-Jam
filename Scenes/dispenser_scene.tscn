@@ -29,17 +29,17 @@ offset_bottom = 57.0
 color = Color(0, 0, 0.043137256, 1)
 
 [node name="FishAmount" type="Label" parent="." unique_id=2127275988]
-offset_left = 404.0
-offset_top = 240.0
-offset_right = 772.0
-offset_bottom = 301.0
+offset_left = 339.0
+offset_top = 163.0
+offset_right = 778.0
+offset_bottom = 224.0
 theme_override_font_sizes/font_size = 44
 text = "   Fish Remaining."
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_a8p54")
 
-[node name="FishAmount2" type="Label" parent="." unique_id=85177928]
+[node name="SpaceToCollect" type="Label" parent="." unique_id=85177928]
 offset_left = 387.0
 offset_top = 542.0
 offset_right = 755.0

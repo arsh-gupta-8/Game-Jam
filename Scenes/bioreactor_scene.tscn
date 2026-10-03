@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2ysjtoirfqo2"]
 
-[ext_resource type="Script" uid="uid://fj1xngav84k7" path="res://Scripts/fishCarry.gd" id="1_fh7p5"]
+[ext_resource type="Script" uid="uid://fj1xngav84k7" path="res://Scripts/bioreactor.gd" id="1_fh7p5"]
 
 [node name="BioreactorScene" type="Node2D" unique_id=1788749412]
 script = ExtResource("1_fh7p5")

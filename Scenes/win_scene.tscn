@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dy04m83cninet"]
+
+[node name="WinScene" type="Node2D" unique_id=810444533]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1274597967]
+
+[node name="Background" type="ColorRect" parent="TextureRect" unique_id=1665731524]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0, 0.23529412, 0.29411766, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1678992521]
+offset_left = 160.0
+offset_top = 211.0
+offset_right = 986.0
+offset_bottom = 376.0
+theme_override_font_sizes/font_size = 38
+text = "Completely fueled up, you begin your ascent.
+
+(You win)"
+horizontal_alignment = 1
+vertical_alignment = 1

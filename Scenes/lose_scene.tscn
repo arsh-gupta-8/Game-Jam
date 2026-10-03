@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b3tnpivhmwplg"]
+
+[node name="LoseScene" type="Node2D" unique_id=2103556309]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=222819199]
+
+[node name="Background" type="ColorRect" parent="TextureRect" unique_id=440409075]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0, 0.23529412, 0.29411766, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1259819774]
+offset_left = 209.0
+offset_top = 243.0
+offset_right = 947.0
+offset_bottom = 408.0
+theme_override_font_sizes/font_size = 38
+text = "The SSR-17 was never to be found again.
+
+(You lose)"
+horizontal_alignment = 1
+vertical_alignment = 1
