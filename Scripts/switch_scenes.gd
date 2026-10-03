@@ -16,7 +16,6 @@ extends Node2D
 	other_scene,
 ]
 
-var current := 0
 var in_menu := true
 var game_over := false
 var skip_frame := false
@@ -75,15 +74,15 @@ func _process(delta: float) -> void:
 		skip_frame = false
 		return
 	if Input.is_action_just_pressed("switch_right"):
-		show_view((current + 1) % views.size())
+		show_view((Global.current + 1) % views.size())
 	elif Input.is_action_just_pressed("switch_left"):
-		show_view((current - 1 + views.size()) % views.size())
+		show_view((Global.current - 1 + views.size()) % views.size())
 
 
 func show_view(index: int) -> void:
-	current = index
+	Global.current = index
 	for i in views.size():
-		var active = i == current
+		var active = i == Global.current
 		views[i].visible = active
 		
 

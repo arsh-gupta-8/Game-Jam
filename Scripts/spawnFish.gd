@@ -57,7 +57,7 @@ func spawnNewFish():
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept") and catchCD.time_left <= 0:
+	if Input.is_action_just_pressed("ui_accept") and catchCD.time_left <= 0 and (Global.current % 4) == 0:
 		var caught_any := false
 		for child in get_children():
 			if child is CharacterBody2D:
