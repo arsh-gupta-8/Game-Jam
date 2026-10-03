@@ -4,12 +4,14 @@ var speed = 250
 var catchCDLength: int = 1
 var catchCD: Timer = Timer.new()
 
-@export var catch_radius: float = 450.0  
+@export var catch_radius: float = 500.0  
 var catch_center: Vector2
 
+var allFish: Array[Resource] = []
+var spawnTimer = Timer.new()
 
 func _ready() -> void:
-	var spawnTimer = Timer.new()
+	get_all_assets_in_folder("res://Assets/Fish/")
 	spawnTimer.autostart = true
 	spawnTimer.wait_time = 3.0
 	spawnTimer.timeout.connect(spawnNewFish)
@@ -19,31 +21,39 @@ func _ready() -> void:
 	catchCD.one_shot = true
 	add_child(catchCD)
 
-	catch_center = get_viewport_rect().size / 2
+	catch_center = Vector2(1305, 555)
 	queue_redraw()
+
+
+func get_all_assets_in_folder(folder_path: String) -> void:  
+	for file_name in ResourceLoader.list_directory(folder_path):
+			
+		var full_path: String = folder_path + file_name
+		var asset = ResourceLoader.load(full_path)
+		
+		if asset:
+			allFish.append(asset)
 
 
 func spawnNewFish():
 	print("Spawned a fish!")
+	spawnTimer.wait_time = randf_range(1, 2)
 
 	var fish = CharacterBody2D.new()
+	fish.z_index = 4
 	var fish_script = load("res://Scripts/fishConstraint.gd")
 	fish.set_script(fish_script)
 
 	var fishBody = Sprite2D.new()
-
-	# Making the fish a template for now
-	var fishPlaceholder = GradientTexture2D.new()
-	fishPlaceholder.width = 64
-	fishPlaceholder.height = 64
-
-	fishBody.texture = fishPlaceholder
-
+	fishBody.rotate(randf_range(0, TAU))
+	fishBody.scale.x = 0.3
+	fishBody.scale.y = 0.3
+	fishBody.texture = allFish.pick_random()
 	fish.add_child(fishBody)
 
 	add_child(fish)
 	var screenSize = get_viewport_rect().size
-	var centerPosition = Vector2(randf_range(0.25*screenSize.x, 0.75*screenSize.x), randf_range(0.25*screenSize.y, 0.75*screenSize.y))
+	var centerPosition = Vector2(randf_range(1304 - 0.15*screenSize.x, 1304 + 0.15*screenSize.x), randf_range(555 - 0.15*screenSize.y, 555 + 0.15*screenSize.y))
 
 	var random_angle = randf_range(0.0, TAU)
 	var offset_vector = Vector2.from_angle(random_angle) * catch_radius

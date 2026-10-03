@@ -39,10 +39,12 @@ texture = ExtResource("5_755dy")
 script = ExtResource("6_oe6do")
 
 [node name="WindowOverlay" type="Sprite2D" parent="." unique_id=203017547]
+z_index = 5
 position = Vector2(960, 540)
 texture = ExtResource("6_igww2")
 
 [node name="ArrowRight" type="Polygon2D" parent="." unique_id=1400369880]
+z_index = 6
 position = Vector2(1842, 468)
 polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
 
