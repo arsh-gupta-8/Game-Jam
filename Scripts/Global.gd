@@ -7,11 +7,13 @@ var heldFish: bool = false
 var draining: bool = false
 var depthStart: float = 950
 var depth: float = 950
-var depthDuration: float = 20  # seconds to sink to the bottom
+var depthDuration: float = 360  # seconds to sink to the bottom
 var current := 0
+var play_time: float = 0.0
 
 func _process(delta: float) -> void:
 	if draining:
+		play_time += delta
 		fuel -= delta * depletionRate
 		depth = max(depth - delta * depthStart / depthDuration, 0.0)
 		print(fuel)

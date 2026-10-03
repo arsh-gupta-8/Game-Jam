@@ -41,6 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		start_game()
 
 func start_game() -> void:
+	Global.play_time = 0.0
 	Global.heldFish = false
 	Global.fuel = 500
 	Global.draining = true

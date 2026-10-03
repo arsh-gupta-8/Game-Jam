@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://df4h85iia3sh8" path="res://Assets/Depth_meter.PNG" id="5_755dy"]
 [ext_resource type="Texture2D" uid="uid://cn3qh1cw4eyiq" path="res://Assets/Window_overlay.PNG" id="6_igww2"]
 [ext_resource type="Script" uid="uid://4my02y8t0m5o" path="res://Scripts/depth_meter.gd" id="6_oe6do"]
+[ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="8_igww2"]
+[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="9_1a01m"]
+[ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="10_emncl"]
 
 [node name="catch_screen" type="Node2D" unique_id=1950425289]
 script = ExtResource("1_ic414")
@@ -43,32 +46,51 @@ z_index = 5
 position = Vector2(960, 540)
 texture = ExtResource("6_igww2")
 
-[node name="ArrowRight" type="Polygon2D" parent="." unique_id=1400369880]
+[node name="ArrowRight" type="Polygon2D" parent="." unique_id=641977499]
 z_index = 6
 position = Vector2(1842, 468)
 polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
+script = ExtResource("8_igww2")
 
-[node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=478597996]
+[node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=1138270024]
 position = Vector2(-1803, -2)
 polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
 
-[node name="A" type="Label" parent="ArrowRight/ArrowLeft" unique_id=1524019364]
+[node name="A" type="Label" parent="ArrowRight/ArrowLeft" unique_id=90135724]
 offset_left = -31.0
 offset_top = 107.0
 offset_right = 80.0
 offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("9_1a01m")
 theme_override_font_sizes/font_size = 50
 text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="D" type="Label" parent="ArrowRight" unique_id=401127774]
+[node name="D" type="Label" parent="ArrowRight" unique_id=804055570]
 offset_left = -43.0
 offset_top = 100.0
 offset_right = 68.0
 offset_bottom = 169.0
+theme_override_fonts/font = ExtResource("9_1a01m")
 theme_override_font_sizes/font_size = 50
 text = "D"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Space" type="Label" parent="ArrowRight" unique_id=609724437]
+offset_left = -948.0
+offset_top = 523.0
+offset_right = -807.0
+offset_bottom = 592.0
+theme_override_fonts/font = ExtResource("9_1a01m")
+theme_override_font_sizes/font_size = 50
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="R" type="Sprite2D" parent="ArrowRight" unique_id=205396928]
+position = Vector2(-877, 498)
+scale = Vector2(0.23180078, 0.23180076)
+texture = ExtResource("10_emncl")

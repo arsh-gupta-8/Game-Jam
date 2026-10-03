@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://x832plq0glyd" path="res://Scripts/fish_amount.gd" id="1_a8p54"]
 [ext_resource type="Texture2D" uid="uid://dv51wu20aaq6r" path="res://Assets/Dock_inner.PNG" id="2_7j6cx"]
 [ext_resource type="Texture2D" uid="uid://db4c6fhoas02h" path="res://Assets/Dock_border.PNG" id="3_xaq4a"]
+[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="4_oqcxk"]
+[ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="4_owjca"]
+[ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="4_xaq4a"]
 
 [node name="DispenserScene" type="Node2D" unique_id=409662265]
 
@@ -47,6 +50,7 @@ texture = ExtResource("3_xaq4a")
 z_index = 6
 position = Vector2(1842, 468)
 polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
+script = ExtResource("4_owjca")
 
 [node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=1917068320]
 position = Vector2(-1803, -2)
@@ -57,6 +61,7 @@ offset_left = -31.0
 offset_top = 107.0
 offset_right = 80.0
 offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("4_oqcxk")
 theme_override_font_sizes/font_size = 50
 text = "A"
 horizontal_alignment = 1
@@ -68,7 +73,24 @@ offset_left = -43.0
 offset_top = 100.0
 offset_right = 68.0
 offset_bottom = 169.0
+theme_override_fonts/font = ExtResource("4_oqcxk")
 theme_override_font_sizes/font_size = 50
 text = "D"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Space" type="Label" parent="ArrowRight" unique_id=426205555]
+offset_left = -948.0
+offset_top = 523.0
+offset_right = -807.0
+offset_bottom = 592.0
+theme_override_fonts/font = ExtResource("4_oqcxk")
+theme_override_font_sizes/font_size = 50
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="R" type="Sprite2D" parent="ArrowRight" unique_id=387227888]
+position = Vector2(-877, 498)
+scale = Vector2(0.23180078, 0.23180076)
+texture = ExtResource("4_xaq4a")
