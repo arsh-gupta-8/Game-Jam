@@ -48,6 +48,10 @@ func start_game() -> void:
 	skip_frame = true
 	menu.visible = false
 	menu.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	for view in views:
+		view.process_mode = Node.PROCESS_MODE_INHERIT
+		
 	show_view(0)
 
 func _process(delta: float) -> void:
@@ -79,7 +83,7 @@ func show_view(index: int) -> void:
 	for i in views.size():
 		var active = i == current
 		views[i].visible = active
-		views[i].process_mode = Node.PROCESS_MODE_INHERIT if active else Node.PROCESS_MODE_DISABLED
+		
 
 func show_ending(target: Node2D) -> void:
 	game_over = true
