@@ -1,35 +1,178 @@
 [gd_scene format=3 uid="uid://bb764aojp2i6a"]
 
+[ext_resource type="Texture2D" uid="uid://doo2m82d1l8gs" path="res://Assets/Water_Background.PNG" id="1_158mb"]
+[ext_resource type="Texture2D" uid="uid://boa5w0y6lwv2b" path="res://Assets/Startscreen_ship.PNG" id="2_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://dom4ljatnmyyg" path="res://Assets/Startscreen_claw.PNG" id="3_jsrd8"]
+[ext_resource type="Texture2D" uid="uid://bpk7yjugog7qd" path="res://Assets/FIN_logo.PNG" id="4_wbdvm"]
+[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Blinker-SemiBold.ttf" id="4_wwsa2"]
+
+[sub_resource type="Animation" id="Animation_158mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Submarine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(898, 552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Submarine:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wwsa2"]
+resource_name = "bob"
+length = 12.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Submarine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 11.999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(898, 552), Vector2(898, 590), Vector2(898, 552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Submarine:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.03490658503988659, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jsrd8"]
+resource_name = "claw"
+length = 1.2
+loop_mode = 2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsrd8"]
+_data = {
+&"RESET": SubResource("Animation_158mb"),
+&"bob": SubResource("Animation_wwsa2"),
+&"claw": SubResource("Animation_jsrd8")
+}
+
+[sub_resource type="Animation" id="Animation_wbdvm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Claw:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1252, 413)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Claw:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_q3rjx"]
+resource_name = "claw"
+length = 8.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Claw:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1252, 413), Vector2(1252, 430)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Claw:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.034906585]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6swd7"]
+_data = {
+&"RESET": SubResource("Animation_wbdvm"),
+&"claw": SubResource("Animation_q3rjx")
+}
+
 [node name="Menu" type="Node2D" unique_id=1044301759]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1164555362]
-metadata/_edit_use_anchors_ = true
+[node name="Background" type="Sprite2D" parent="." unique_id=533122802]
+position = Vector2(960.00006, 540)
+scale = Vector2(0.75000006, 0.75)
+texture = ExtResource("1_158mb")
 
-[node name="Background" type="ColorRect" parent="TextureRect" unique_id=599649133]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0, 0.23529412, 0.48235294, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Submarine" type="Sprite2D" parent="." unique_id=1329839985]
+position = Vector2(898, 552)
+scale = Vector2(0.83229154, 0.83229154)
+texture = ExtResource("2_wwsa2")
+
+[node name="FIN" type="Sprite2D" parent="." unique_id=797198231]
+position = Vector2(313.00003, 631)
+scale = Vector2(0.45813954, 0.45813954)
+texture = ExtResource("4_wbdvm")
 
 [node name="Label" type="Label" parent="." unique_id=783905738]
-offset_left = 689.0
-offset_top = 842.0
-offset_right = 1227.0
-offset_bottom = 911.0
+offset_left = 53.0
+offset_top = 869.0
+offset_right = 591.0
+offset_bottom = 938.0
+theme_override_fonts/font = ExtResource("4_wwsa2")
 theme_override_font_sizes/font_size = 50
 text = "Press Any Key To Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="." unique_id=1904213734]
-offset_left = 290.0
-offset_top = 287.0
-offset_right = 575.0
-offset_bottom = 528.0
-theme_override_font_sizes/font_size = 176
-text = "FIN"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+[node name="SubmarinePlayer" type="AnimationPlayer" parent="." unique_id=913363461]
+libraries/ = SubResource("AnimationLibrary_jsrd8")
+autoplay = &"bob"
+
+[node name="ClawPlayer" type="AnimationPlayer" parent="." unique_id=710489269]
+libraries/ = SubResource("AnimationLibrary_6swd7")
+autoplay = &"claw"
+
+[node name="Claw" type="Sprite2D" parent="." unique_id=553358040]
+position = Vector2(1252, 413)
+texture = ExtResource("3_jsrd8")
