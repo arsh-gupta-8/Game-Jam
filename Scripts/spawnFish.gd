@@ -45,16 +45,9 @@ func spawnNewFish():
 	var screenSize = get_viewport_rect().size
 	var centerPosition = Vector2(randf_range(0.25*screenSize.x, 0.75*screenSize.x), randf_range(0.25*screenSize.y, 0.75*screenSize.y))
 
-	var side = randi() % 4
-	var spawnPos = Vector2.ZERO
-	if side == 0:
-		spawnPos = Vector2(randi_range(0, screenSize.x), 0)
-	elif side == 2:
-		spawnPos = Vector2(randi_range(0, screenSize.x), screenSize.y)
-	elif side == 3:
-		spawnPos = Vector2(0, randi_range(0, screenSize.y))
-	else:
-		spawnPos = Vector2(screenSize.x, randi_range(0, screenSize.y))
+	var random_angle = randf_range(0.0, TAU)
+	var offset_vector = Vector2.from_angle(random_angle) * catch_radius
+	var spawnPos = catch_center + offset_vector
 
 	var directionVector = centerPosition - spawnPos
 	fish.global_position = spawnPos
