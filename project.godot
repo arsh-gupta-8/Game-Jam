@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://djug31mrjbwgt"
 
 Global="*uid://bay272a6kitug"
 Music="*uid://dep17w4m0rcbn"
+Ambience="*uid://dp05po0jxu8xe"
 
 [display]
 

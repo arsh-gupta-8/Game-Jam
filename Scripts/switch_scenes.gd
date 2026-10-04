@@ -30,6 +30,7 @@ func _ready() -> void:
 		end_scene.process_mode = Node.PROCESS_MODE_DISABLED
 	menu.visible = true
 	Global.draining = false
+	Ambience.stop()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -82,6 +83,7 @@ func _process(delta: float) -> void:
 
 func show_view(index: int) -> void:
 	Global.current = index
+	Ambience.start()   
 	for i in views.size():
 		var active = i == Global.current
 		views[i].visible = active
@@ -90,6 +92,7 @@ func show_view(index: int) -> void:
 func show_ending(target: Node2D) -> void:
 	game_over = true
 	Global.draining = false
+	Ambience.stop()
 	for view in views:
 		view.visible = false
 		view.process_mode = Node.PROCESS_MODE_DISABLED

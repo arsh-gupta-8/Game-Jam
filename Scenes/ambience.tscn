@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dp05po0jxu8xe"]
+
+[ext_resource type="AudioStream" uid="uid://ddvvyoerxmsjm" path="res://Assets/Audio/WaterAmbience.mp3" id="1_l12mp"]
+[ext_resource type="Script" uid="uid://ltiqwclxsac4" path="res://Scripts/ambience.gd" id="2_l5ho1"]
+
+[node name="Ambience" type="AudioStreamPlayer2D" unique_id=721403393]
+stream = ExtResource("1_l12mp")
+bus = &"SFX"
+script = ExtResource("2_l5ho1")
