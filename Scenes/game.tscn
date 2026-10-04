@@ -71,6 +71,7 @@ script = ExtResource("1_3dryh")
 [node name="BioreactorScene" parent="." unique_id=1788749412 instance=ExtResource("5_1l0tm")]
 
 [node name="OtherScene" parent="." unique_id=1648236018 instance=ExtResource("6_v158k")]
+script = null
 
 [node name="LoseScene" parent="." unique_id=2103556309 instance=ExtResource("8_h4fw4")]
 
