@@ -16,6 +16,13 @@ const DARK_DEPTH := 0   # depth where it's at its darkest
 const MAX_DARKNESS := 0.85   # 1.0 would be pure black
 @onready var dark_tint: ColorRect = $DarkTint
 
+# smokescreen
+@onready var smokescreen: Sprite2D = $Smokescreen
+@onready var catch_sound: AudioStreamPlayer2D = $CatchSound
+const FADE_IN_TIME := 0.1    # fast
+const FADE_OUT_TIME := 0.9   # slower
+var flash_tween: Tween
+
 func _ready() -> void:
 	get_all_assets_in_folder("res://Assets/Fish/")
 	spawnTimer.autostart = true
@@ -29,6 +36,8 @@ func _ready() -> void:
 
 	catch_center = Vector2(1305, 555)
 	queue_redraw()
+	
+	smokescreen.modulate.a = 0.0
 
 
 func get_all_assets_in_folder(folder_path: String) -> void:  
@@ -86,8 +95,20 @@ func _process(delta: float) -> void:
 					caught_any = true
 		if caught_any:
 			catchCD.start()
+			play_catch_effect()
 		print(Global.fishCaught)
 	
 	# get darker as depth is lower
 	var t := clampf(inverse_lerp(START_DEPTH, DARK_DEPTH, Global.depth), 0.0, 1.0)
 	dark_tint.color.a = t * MAX_DARKNESS
+	
+func play_catch_effect() -> void:
+	catch_sound.play()
+
+	if flash_tween and flash_tween.is_running():
+		flash_tween.kill()   # restart cleanly if a catch happens mid-fade
+
+	smokescreen.modulate.a = 0.0
+	flash_tween = create_tween()
+	flash_tween.tween_property(smokescreen, "modulate:a", 1.0, FADE_IN_TIME)
+	flash_tween.tween_property(smokescreen, "modulate:a", 0.0, FADE_OUT_TIME)
