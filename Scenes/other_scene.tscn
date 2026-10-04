@@ -3,18 +3,15 @@
 [ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="1_fim2g"]
 [ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="2_87ivu"]
 [ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="3_82n1c"]
+[ext_resource type="Texture2D" uid="uid://bc7282lef2oxf" path="res://Assets/Doorscene_background.PNG" id="4_ia7s0"]
+[ext_resource type="Texture2D" uid="uid://btph2vse1ev8e" path="res://Assets/Doorscene_notes.PNG" id="5_hfro5"]
+[ext_resource type="Texture2D" uid="uid://c8hksoojdkuy8" path="res://Assets/Doorscene_door.PNG" id="6_uey2y"]
 
 [node name="OtherScene" type="Node2D" unique_id=409662265]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2141106499]
 offset_top = -2.0
 offset_bottom = -2.0
-
-[node name="Background" type="ColorRect" parent="TextureRect" unique_id=150044044]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0, 0.23529412, 0.29411766, 1)
 
 [node name="ArrowRight" type="Polygon2D" parent="." unique_id=1645069552]
 z_index = 6
@@ -64,3 +61,15 @@ vertical_alignment = 1
 position = Vector2(-877, 498)
 scale = Vector2(0.23180078, 0.23180076)
 texture = ExtResource("3_82n1c")
+
+[node name="DoorsceneBackground" type="Sprite2D" parent="." unique_id=1382429301]
+position = Vector2(960, 540)
+texture = ExtResource("4_ia7s0")
+
+[node name="DoorsceneNotes" type="Sprite2D" parent="." unique_id=2068427686]
+position = Vector2(960, 540)
+texture = ExtResource("5_hfro5")
+
+[node name="DoorsceneDoor" type="Sprite2D" parent="." unique_id=1575427593]
+position = Vector2(960, 540)
+texture = ExtResource("6_uey2y")
