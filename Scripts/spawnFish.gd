@@ -81,7 +81,3 @@ func _process(delta: float) -> void:
 		if caught_any:
 			catchCD.start()
 		print(Global.fishCaught)
-
-
-func _draw() -> void:
-	draw_arc(to_local(catch_center), catch_radius, 0, TAU, 128, Color.WHITE, 4.0, true)

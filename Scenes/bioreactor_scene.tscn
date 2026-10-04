@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://baxr8umj1epwa" path="res://Assets/BioLiquidBG.PNG" id="7_dpfwn"]
 [ext_resource type="Texture2D" uid="uid://dgbd7thxif0ay" path="res://Assets/BioLiquid.PNG" id="8_p8yca"]
 [ext_resource type="Texture2D" uid="uid://dy41ectnfi433" path="res://Assets/BioNotes.PNG" id="9_jhgdl"]
+[ext_resource type="Script" uid="uid://dlbcn11p2bx47" path="res://Scripts/bio_liquid.gd" id="9_qwok5"]
 [ext_resource type="Texture2D" uid="uid://du1v3tv10b3a3" path="res://Assets/BioWaste.PNG" id="10_7cacx"]
 [ext_resource type="Texture2D" uid="uid://b2uuffvim1ang" path="res://Assets/BioOutline.PNG" id="11_slch4"]
 [ext_resource type="Texture2D" uid="uid://n8xtxxq3hfq3" path="res://Assets/BioDoor.PNG" id="12_bcney"]
@@ -93,8 +94,10 @@ position = Vector2(957, 550)
 texture = ExtResource("7_dpfwn")
 
 [node name="BioLiquid" type="Sprite2D" parent="." unique_id=1621625764]
-position = Vector2(960, 540)
+modulate = Color(0.41568628, 0.92941177, 0.9764706, 1)
+position = Vector2(960, 1426.57)
 texture = ExtResource("8_p8yca")
+script = ExtResource("9_qwok5")
 
 [node name="BioNotes" type="Sprite2D" parent="." unique_id=45593129]
 position = Vector2(960, 540)
