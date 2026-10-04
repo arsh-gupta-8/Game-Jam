@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dr885qyyr4q3x" path="res://Assets/Keys/Key_A.PNG" id="13_ir8pd"]
 [ext_resource type="Texture2D" uid="uid://barh5oltublvy" path="res://Assets/Keys/Key_D.PNG" id="14_g3dpn"]
 [ext_resource type="Texture2D" uid="uid://doeybaaadwob" path="res://Assets/Keys/Key_SPACE.PNG" id="15_4np7c"]
+[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="16_iwevt"]
 
 [node name="catch_screen" type="Node2D" unique_id=1950425289]
 script = ExtResource("1_ic414")
@@ -93,3 +94,20 @@ texture = ExtResource("14_g3dpn")
 position = Vector2(-1651.875, 763.1249)
 scale = Vector2(0.98124987, 0.98124987)
 texture = ExtResource("15_4np7c")
+
+[node name="Instructions" type="Label" parent="Sprite2D" unique_id=1384213761]
+offset_left = -2874.3748
+offset_top = -673.1249
+offset_right = -354.3745
+offset_bottom = 430.87512
+theme_override_fonts/font = ExtResource("16_iwevt")
+theme_override_font_sizes/font_size = 100
+text = "Fill up the fuel tank behind you with normal fish to survive. Don't catch infected fish.
+
+If depth or fuel goes to 0, you'll die.
+
+Every so often, you'll hear a knock on the door. Press space on the door in 5 seconds to avoid consequences.
+
+Good luck."
+horizontal_alignment = 1
+autowrap_mode = 2
