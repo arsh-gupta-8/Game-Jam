@@ -20,7 +20,7 @@ const INTRO_VIDEO := "res://Assets/Videos/Starting_animation.ogv"
 const OXYGEN_LOSE_VIDEO := "res://Assets/Videos/Blinking_oxygen_ending.ogv"
 const DEPTH_LOSE_VIDEO := "res://Assets/Videos/Depth_ending.ogv"
 const WIN_VIDEO := "res://Assets/Videos/Good_ending.ogv"
-const LOSE_SCREEN_TIME := 5.0
+const LOSE_SCREEN_TIME := 6.0
 
 # static = survives reload_current_scene(), so the intro only plays on first launch
 static var intro_played := false
@@ -141,7 +141,11 @@ func show_ending(target: Node2D) -> void:
 	if target:
 		target.visible = true
 		target.process_mode = Node.PROCESS_MODE_INHERIT
-
+		var sound = target.get_node_or_null("DeathSound")
+		if sound:
+			sound.play()
+		else:
+			push_warning("No node named DeathSound in " + target.name)
 
 func play_video(path: String) -> void:
 	if not ResourceLoader.exists(path):
@@ -154,14 +158,15 @@ func play_video(path: String) -> void:
 	video_layer.visible = false
 
 
-# screen = the sprite scene to show for LOSE_SCREEN_TIME first (null = skip straight to video)
 func end_game(screen: Node2D, video: String) -> void:
 	show_ending(screen)
 	if screen:
 		await get_tree().create_timer(LOSE_SCREEN_TIME).timeout
+		var sound = screen.get_node_or_null("DeathSound")
+		if sound:
+			sound.stop()
 	await play_video(video)
-	get_tree().reload_current_scene()   # back to the menu
-
+	get_tree().reload_current_scene()
 
 func win() -> void:
 	end_game(null, WIN_VIDEO)

@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://bmgmdyeei1e2"]
 
 [ext_resource type="Texture2D" uid="uid://cw6dkgfkjqy05" path="res://Assets/EndingOxygen.PNG" id="1_keyda"]
+[ext_resource type="AudioStream" uid="uid://cuhyg2yvljlq3" path="res://Assets/Audio/DeathSound.mp3" id="2_ppql1"]
 
 [node name="OxygenLoseScene" type="Node2D" unique_id=96433272]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1337954267]
 position = Vector2(960, 540)
 texture = ExtResource("1_keyda")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1147064271]
+stream = ExtResource("2_ppql1")
+bus = &"SFX"

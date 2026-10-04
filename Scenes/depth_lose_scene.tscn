@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvt1b486fprm2"]
 
 [ext_resource type="Texture2D" uid="uid://bty3147t1incj" path="res://Assets/EndingDepth.PNG" id="1_62x0g"]
+[ext_resource type="AudioStream" uid="uid://cuhyg2yvljlq3" path="res://Assets/Audio/DeathSound.mp3" id="2_h44pm"]
 
 [node name="DepthLoseScene" type="Node2D" unique_id=1683728488]
 
@@ -8,4 +9,6 @@
 position = Vector2(960, 540)
 texture = ExtResource("1_62x0g")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1385869920]
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1385869920]
+stream = ExtResource("2_h44pm")
+bus = &"SFX"

@@ -1,14 +1,14 @@
 extends Node
 
 var fuel: float = 500 # reach 1000 to win
-var depletionRate: int = 2
+var depletionRate: int = 100
 var fishCaught: Array = []
 var heldFish: bool = false
 var heldFuel: int = 0
 var draining: bool = false
 var depthStart: float = 950
 var depth: float = 950
-var depthDuration: float = 20  # seconds to sink to the bottom
+var depthDuration: float = 360  # seconds to sink to the bottom
 var current := 0
 var play_time: float = 0.0
 var scene_locked := false
