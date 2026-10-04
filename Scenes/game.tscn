@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://bbo2eow25784t" path="res://Scripts/pause_menu.gd" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dy04m83cninet" path="res://Scenes/win_scene.tscn" id="9_ldgsr"]
 [ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="10_ldgsr"]
+[ext_resource type="VideoStream" uid="uid://uu2uxmpqtqae" path="res://Assets/Videos/Starting_animation.ogv" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://bmgmdyeei1e2" path="res://Scenes/oxygen_lose_scene.tscn" id="12_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://bvt1b486fprm2" path="res://Scenes/depth_lose_scene.tscn" id="13_1phco"]
 
 [sub_resource type="Gradient" id="Gradient_h4fw4"]
 offsets = PackedFloat32Array(0, 0.52427185, 1)
@@ -65,19 +68,26 @@ _data = {
 script = ExtResource("1_3dryh")
 
 [node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("3_v158k")]
+visible = false
 
 [node name="DispenserScene" parent="." unique_id=409662265 instance=ExtResource("3_wrm1d")]
+visible = false
 
 [node name="BioreactorScene" parent="." unique_id=1788749412 instance=ExtResource("5_1l0tm")]
+visible = false
 
 [node name="OtherScene" parent="." unique_id=1648236018 instance=ExtResource("6_v158k")]
+visible = false
 script = null
 
 [node name="LoseScene" parent="." unique_id=2103556309 instance=ExtResource("8_h4fw4")]
+visible = false
 
 [node name="WinScene" parent="." unique_id=810444533 instance=ExtResource("9_ldgsr")]
+visible = false
 
 [node name="Menu" parent="." unique_id=1044301759 instance=ExtResource("7_h4fw4")]
+visible = false
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2041336277]
 process_mode = 3
@@ -130,9 +140,9 @@ text = "Quit"
 
 [node name="Vignette" type="CanvasLayer" parent="." unique_id=1988027125]
 layer = 5
+visible = false
 
 [node name="Tint" type="ColorRect" parent="Vignette" unique_id=95160692]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
@@ -149,3 +159,23 @@ expand_mode = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Vignette" unique_id=861052712]
 libraries/ = SubResource("AnimationLibrary_o5yvi")
 autoplay = &"pulse"
+
+[node name="DepthLoseScreen" type="Node2D" parent="." unique_id=531958120]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="DepthLoseScreen" unique_id=256035450]
+
+[node name="VideoLayer" type="CanvasLayer" parent="." unique_id=2125137352]
+layer = 90
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="VideoLayer" unique_id=1937275170]
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("11_o5yvi")
+expand = true
+
+[node name="OxygenLoseScene" parent="." unique_id=96433272 instance=ExtResource("12_rfjv2")]
+visible = false
+
+[node name="DepthLoseScene" parent="." unique_id=1683728488 instance=ExtResource("13_1phco")]
+visible = false

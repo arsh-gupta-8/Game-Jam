@@ -2,15 +2,28 @@ extends Node2D
 
 @onready var menu: Node2D = $Menu
 @onready var menu_ui: CanvasLayer = $Menu/MenuUI
-@onready var win_scene: Node2D = $WinScene
-@onready var lose_scene: Node2D = $LoseScene
 
 @onready var catch_screen: Node2D = $catch_screen
 @onready var dispenser_scene: Node2D = $DispenserScene
 @onready var bioreactor_scene: Node2D = $BioreactorScene
 @onready var other_scene: Node2D = $OtherScene
 
-#@onready var menu_ui: CanvasLayer = find_canvas_layer(menu)
+# lose screens (just a sprite each)
+@onready var depth_lose_scene: Node2D = $DepthLoseScene
+@onready var oxygen_lose_scene: Node2D = $OxygenLoseScene
+
+# videos
+@onready var video_layer: CanvasLayer = $VideoLayer
+@onready var video_player: VideoStreamPlayer = $VideoLayer/VideoPlayer
+
+const INTRO_VIDEO := "res://Assets/Videos/Starting_animation.ogv"
+const OXYGEN_LOSE_VIDEO := "res://Assets/Videos/Blinking_oxygen_ending.ogv"
+const DEPTH_LOSE_VIDEO := "res://Assets/Videos/Depth_ending.ogv"
+const WIN_VIDEO := "res://Assets/Videos/Good_ending.ogv"
+const LOSE_SCREEN_TIME := 5.0
+
+# static = survives reload_current_scene(), so the intro only plays on first launch
+static var intro_played := false
 
 @onready var views: Array[Node2D] = [
 	catch_screen,
@@ -19,7 +32,8 @@ extends Node2D
 	other_scene,
 ]
 
-var in_menu := true
+var in_menu := false        # true only while the menu is waiting for a click
+var game_running := false   # true only while actually playing
 var game_over := false
 var skip_frame := false
 
@@ -28,20 +42,29 @@ func _ready() -> void:
 	for view in views:
 		view.visible = false
 		view.process_mode = Node.PROCESS_MODE_DISABLED
-	for end_scene in [win_scene, lose_scene]:
+	for end_scene in [depth_lose_scene, oxygen_lose_scene]:
 		end_scene.visible = false
 		end_scene.process_mode = Node.PROCESS_MODE_DISABLED
-	menu.visible = true
+	video_layer.visible = false
 	Global.draining = false
-	Ambience.stop()
 	Global.scene_locked = false
-	menu_ui.visible = true
+	Ambience.stop()
 
+	# keep the menu hidden until the intro is done (first launch only)
+	menu.visible = false
+	menu_ui.visible = false
+	if not intro_played:
+		intro_played = true
+		await play_video(INTRO_VIDEO)
+
+	menu.visible = true
+	menu_ui.visible = true
+	in_menu = true
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_J:
-		Jumpscares.play()
+		Jumpscares.play()   # debug key, delete this when you're done testing
 	if not in_menu:
 		return
 	var pressed_key = event is InputEventKey and event.pressed and not event.echo
@@ -51,39 +74,44 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func start_game() -> void:
+	in_menu = false
+	menu.visible = false
+	menu_ui.visible = false
+	menu.process_mode = Node.PROCESS_MODE_DISABLED
+
 	Global.play_time = 0.0
 	Global.heldFish = false
 	Global.heldFuel = 0
 	Global.fuel = 500
-	Global.draining = true
+	Global.depth = Global.depthStart
 	Global.fishCaught.clear()
+	Global.draining = true
 	Global.scene_locked = false
-	in_menu = false
 	skip_frame = true
-	menu.visible = false
-	menu_ui.visible = false
-	menu.process_mode = Node.PROCESS_MODE_DISABLED
-	
+
 	for view in views:
 		view.process_mode = Node.PROCESS_MODE_INHERIT
-		
+
+	game_running = true
 	show_view(0)
 
+
 func _process(delta: float) -> void:
-	if game_over:
-		return
-	if in_menu:
+	if game_over or not game_running:
 		return
 
-	# Hold off on win/lose and view switching while a fish is dropping or a jumpscare is playing
+	# hold off while a fish is dropping or a jumpscare is playing
 	if Global.scene_locked or Jumpscares.playing:
 		return
 
 	if Global.fuel >= 1000:
 		win()
 		return
+	elif Global.depth <= 0:
+		lose_depth()
+		return
 	elif Global.fuel <= 0:
-		lose()
+		lose_oxygen()
 		return
 
 	if skip_frame:
@@ -94,28 +122,54 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("switch_left"):
 		show_view((Global.current - 1 + views.size()) % views.size())
 
+
 func show_view(index: int) -> void:
-	print_stack()
-	print("show_view: ", index)
 	Global.current = index
-	Ambience.start()   
+	Ambience.start()
 	for i in views.size():
-		var active = i == Global.current
-		views[i].visible = active
-		
+		views[i].visible = (i == Global.current)
+
 
 func show_ending(target: Node2D) -> void:
 	game_over = true
+	game_running = false
 	Global.draining = false
 	Ambience.stop()
 	for view in views:
 		view.visible = false
 		view.process_mode = Node.PROCESS_MODE_DISABLED
-	target.visible = true
-	target.process_mode = Node.PROCESS_MODE_INHERIT
+	if target:
+		target.visible = true
+		target.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func play_video(path: String) -> void:
+	if not ResourceLoader.exists(path):
+		push_warning("Video not found: " + path)
+		return   # skip instead of hanging forever
+	video_player.stream = load(path)
+	video_layer.visible = true
+	video_player.play()
+	await video_player.finished
+	video_layer.visible = false
+
+
+# screen = the sprite scene to show for LOSE_SCREEN_TIME first (null = skip straight to video)
+func end_game(screen: Node2D, video: String) -> void:
+	show_ending(screen)
+	if screen:
+		await get_tree().create_timer(LOSE_SCREEN_TIME).timeout
+	await play_video(video)
+	get_tree().reload_current_scene()   # back to the menu
+
 
 func win() -> void:
-	show_ending(win_scene)
+	end_game(null, WIN_VIDEO)
 
-func lose() -> void:
-	show_ending(lose_scene)
+
+func lose_oxygen() -> void:
+	end_game(oxygen_lose_scene, OXYGEN_LOSE_VIDEO)
+
+
+func lose_depth() -> void:
+	end_game(depth_lose_scene, DEPTH_LOSE_VIDEO)
