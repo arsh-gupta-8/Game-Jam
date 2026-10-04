@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bp84elntinnqn"]
+
+[ext_resource type="Script" uid="uid://c1rya6nxrbynn" path="res://Scripts/jumpscares.gd" id="1_iosld"]
+
+[node name="Jumpscares" type="CanvasLayer" unique_id=163293928]
+script = ExtResource("1_iosld")

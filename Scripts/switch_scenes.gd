@@ -31,9 +31,12 @@ func _ready() -> void:
 	menu.visible = true
 	Global.draining = false
 	Ambience.stop()
+	Global.scene_locked = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_J:
+		Jumpscares.play()
 	if not in_menu:
 		return
 	var pressed_key = event is InputEventKey and event.pressed and not event.echo
@@ -41,12 +44,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if pressed_key or pressed_click:
 		start_game()
 
+
 func start_game() -> void:
 	Global.play_time = 0.0
 	Global.heldFish = false
+	Global.heldFuel = 0
 	Global.fuel = 500
 	Global.draining = true
 	Global.fishCaught.clear()
+	Global.scene_locked = false
 	in_menu = false
 	skip_frame = true
 	menu.visible = false
@@ -60,18 +66,20 @@ func start_game() -> void:
 func _process(delta: float) -> void:
 	if game_over:
 		return
-
-	# Win/lose only count once the game has started
-	if not in_menu:
-		if Global.fuel >= 1000:
-			win()
-			return
-		elif Global.fuel <= 0:
-			lose()
-			return
-
 	if in_menu:
 		return
+
+	# Hold off on win/lose and view switching while a fish is dropping or a jumpscare is playing
+	if Global.scene_locked or Jumpscares.playing:
+		return
+
+	if Global.fuel >= 1000:
+		win()
+		return
+	elif Global.fuel <= 0:
+		lose()
+		return
+
 	if skip_frame:
 		skip_frame = false
 		return
@@ -80,8 +88,9 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("switch_left"):
 		show_view((Global.current - 1 + views.size()) % views.size())
 
-
 func show_view(index: int) -> void:
+	print_stack()
+	print("show_view: ", index)
 	Global.current = index
 	Ambience.start()   
 	for i in views.size():

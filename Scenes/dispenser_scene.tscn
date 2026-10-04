@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://46wuoswhp2gk"]
 
 [ext_resource type="Script" uid="uid://x832plq0glyd" path="res://Scripts/fish_amount.gd" id="1_a8p54"]
+[ext_resource type="Script" uid="uid://dm18hxq430gp" path="res://Scripts/dispenser_scene.gd" id="1_t5wgu"]
 [ext_resource type="Texture2D" uid="uid://dv51wu20aaq6r" path="res://Assets/Dock_inner.PNG" id="2_7j6cx"]
 [ext_resource type="Texture2D" uid="uid://db4c6fhoas02h" path="res://Assets/Dock_border.PNG" id="3_xaq4a"]
 [ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="4_oqcxk"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="4_xaq4a"]
 
 [node name="DispenserScene" type="Node2D" unique_id=409662265]
+script = ExtResource("1_t5wgu")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2141106499]
 
@@ -16,17 +18,6 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0.23529412, 0.29411766, 1)
-
-[node name="FishAmount" type="Label" parent="." unique_id=2127275988]
-offset_left = 704.0
-offset_top = 383.0
-offset_right = 1143.0
-offset_bottom = 444.0
-theme_override_font_sizes/font_size = 44
-text = "   Fish Remaining."
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("1_a8p54")
 
 [node name="SpaceToCollect" type="Label" parent="." unique_id=85177928]
 offset_left = 769.0
@@ -45,6 +36,18 @@ texture = ExtResource("2_7j6cx")
 [node name="DockOuter" type="Sprite2D" parent="." unique_id=1782270334]
 position = Vector2(960, 540)
 texture = ExtResource("3_xaq4a")
+
+[node name="FishAmount" type="Label" parent="." unique_id=2127275988]
+offset_left = 349.0
+offset_top = 95.0
+offset_right = 788.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("4_oqcxk")
+theme_override_font_sizes/font_size = 44
+text = "   Fish Remaining."
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_a8p54")
 
 [node name="ArrowRight" type="Polygon2D" parent="." unique_id=418478169]
 z_index = 6
@@ -94,3 +97,10 @@ vertical_alignment = 1
 position = Vector2(-877, 498)
 scale = Vector2(0.23180078, 0.23180076)
 texture = ExtResource("4_xaq4a")
+
+[node name="FishDrop" type="Node2D" parent="." unique_id=921117287]
+position = Vector2(951, 295)
+
+[node name="Body" type="Sprite2D" parent="FishDrop" unique_id=254522180]
+
+[node name="Spot" type="Sprite2D" parent="FishDrop" unique_id=1092007357]

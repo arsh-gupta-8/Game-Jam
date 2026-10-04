@@ -15,6 +15,7 @@
 
 [node name="catch_screen" type="Node2D" unique_id=1950425289]
 script = ExtResource("1_ic414")
+catch_radius = null
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1489143193]
 
