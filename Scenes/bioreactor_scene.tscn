@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="2_ednsk"]
 [ext_resource type="Texture2D" uid="uid://o5pn8keoxxhx" path="res://Assets/BioBackground.PNG" id="5_ajbqo"]
 [ext_resource type="Texture2D" uid="uid://sc74cpvqkoqm" path="res://Assets/BioBG.PNG" id="6_qwok5"]
+[ext_resource type="Shader" uid="uid://cy0kchmvhap4i" path="res://Assets/depthMeter.gdshader" id="7_bcney"]
 [ext_resource type="Texture2D" uid="uid://baxr8umj1epwa" path="res://Assets/BioLiquidBG.PNG" id="7_dpfwn"]
 [ext_resource type="Texture2D" uid="uid://dgbd7thxif0ay" path="res://Assets/BioLiquid.PNG" id="8_p8yca"]
 [ext_resource type="Texture2D" uid="uid://dy41ectnfi433" path="res://Assets/BioNotes.PNG" id="9_jhgdl"]
@@ -18,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://dr885qyyr4q3x" path="res://Assets/Keys/Key_A.PNG" id="16_01ofe"]
 [ext_resource type="Texture2D" uid="uid://barh5oltublvy" path="res://Assets/Keys/Key_D.PNG" id="17_86kn1"]
 [ext_resource type="Texture2D" uid="uid://doeybaaadwob" path="res://Assets/Keys/Key_SPACE.PNG" id="18_7diok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ktcf"]
+shader = ExtResource("7_bcney")
 
 [sub_resource type="Animation" id="Animation_qwok5"]
 length = 0.001
@@ -117,6 +121,7 @@ position = Vector2(960, 540)
 texture = ExtResource("10_7cacx")
 
 [node name="BioDepth" type="Sprite2D" parent="." unique_id=468013175]
+material = SubResource("ShaderMaterial_2ktcf")
 position = Vector2(957, 777.745)
 texture = ExtResource("7_dpfwn")
 script = ExtResource("12_p8yca")
