@@ -109,7 +109,7 @@ func make_catch_entry(fish: Node) -> Dictionary:
 
 
 func spawnNewFish():
-	#print("Spawned a fish!")
+	print("Spawned a fish!")
 	var t := depth_factor()
 	spawnTimer.wait_time = randf_range(
 		lerpf(SPAWN_WAIT_SHALLOW.x, SPAWN_WAIT_DEEP.x, t),
@@ -120,7 +120,7 @@ func spawnNewFish():
 	var body_tex: Texture2D = type_data["bodies"].pick_random()
 	var infected: bool = randf() < INFECTED_CHANCE and not type_data["spots"].is_empty()
 	var spot_tex: Texture2D = type_data["spots"].pick_random() if infected else null
-	
+
 	var fish = CharacterBody2D.new()
 	fish.z_index = 4
 	var fish_script = load("res://Scripts/fishConstraint.gd")

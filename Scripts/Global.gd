@@ -19,4 +19,3 @@ func _process(delta: float) -> void:
 		play_time += delta
 		fuel -= delta * depletionRate
 		depth = max(depth - delta * depthStart / depthDuration, 0.0)
-		#print(fuel)
