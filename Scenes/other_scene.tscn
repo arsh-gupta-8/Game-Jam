@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c66xibm37tehp"]
 
+[ext_resource type="Script" uid="uid://bh15pwbu20utg" path="res://Scenes/checkDoor.gd" id="1_87ivu"]
 [ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="1_fim2g"]
 [ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="2_87ivu"]
 [ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="3_82n1c"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c8hksoojdkuy8" path="res://Assets/Doorscene_door.PNG" id="6_uey2y"]
 
 [node name="OtherScene" type="Node2D" unique_id=409662265]
+script = ExtResource("1_87ivu")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2141106499]
 offset_top = -2.0
