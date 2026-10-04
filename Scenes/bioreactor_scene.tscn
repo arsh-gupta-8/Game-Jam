@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://du1v3tv10b3a3" path="res://Assets/BioWaste.PNG" id="10_7cacx"]
 [ext_resource type="Texture2D" uid="uid://b2uuffvim1ang" path="res://Assets/BioOutline.PNG" id="11_slch4"]
 [ext_resource type="Texture2D" uid="uid://n8xtxxq3hfq3" path="res://Assets/BioDoor.PNG" id="12_bcney"]
+[ext_resource type="Script" uid="uid://dhxbq58u0lh86" path="res://Scripts/bio_depth.gd" id="12_p8yca"]
 [ext_resource type="AudioStream" uid="uid://c44j4d4q3kouf" path="res://Assets/Audio/BioSound.mp3" id="14_dpfwn"]
 
 [sub_resource type="Animation" id="Animation_qwok5"]
@@ -147,10 +148,6 @@ texture = ExtResource("4_bbxdo")
 position = Vector2(960, 540)
 texture = ExtResource("5_ajbqo")
 
-[node name="BioDepth" type="Sprite2D" parent="." unique_id=468013175]
-position = Vector2(957, 550)
-texture = ExtResource("7_dpfwn")
-
 [node name="BioLiquid" type="Sprite2D" parent="." unique_id=1621625764]
 modulate = Color(0.41568628, 0.92941177, 0.9764706, 1)
 position = Vector2(960, 1427)
@@ -168,6 +165,11 @@ texture = ExtResource("6_qwok5")
 [node name="BioWaste" type="Sprite2D" parent="." unique_id=371005455]
 position = Vector2(960, 540)
 texture = ExtResource("10_7cacx")
+
+[node name="BioDepth" type="Sprite2D" parent="." unique_id=468013175]
+position = Vector2(957, 777.745)
+texture = ExtResource("7_dpfwn")
+script = ExtResource("12_p8yca")
 
 [node name="BioWasteBG2" type="Sprite2D" parent="." unique_id=801160615]
 position = Vector2(2209, 1458)
