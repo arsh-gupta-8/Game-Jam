@@ -108,10 +108,6 @@ position = Vector2(960, 1427)
 texture = ExtResource("8_p8yca")
 script = ExtResource("9_qwok5")
 
-[node name="BioNotes" type="Sprite2D" parent="." unique_id=45593129]
-position = Vector2(960, 540)
-texture = ExtResource("9_jhgdl")
-
 [node name="BioWasteBG" type="Sprite2D" parent="." unique_id=490281601]
 position = Vector2(960, 540)
 texture = ExtResource("6_qwok5")
@@ -133,6 +129,10 @@ texture = ExtResource("6_qwok5")
 [node name="BioOutline" type="Sprite2D" parent="." unique_id=548902290]
 position = Vector2(960, 540)
 texture = ExtResource("11_slch4")
+
+[node name="BioNotes" type="Sprite2D" parent="." unique_id=45593129]
+position = Vector2(960, 540)
+texture = ExtResource("9_jhgdl")
 
 [node name="BioDoor" type="Sprite2D" parent="." unique_id=1061095465]
 position = Vector2(960, 540)
