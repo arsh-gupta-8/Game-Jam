@@ -81,7 +81,6 @@ visible = false
 visible = false
 script = ExtResource("6_o5yvi")
 
-
 [node name="LoseScene" parent="." unique_id=2103556309 instance=ExtResource("8_h4fw4")]
 visible = false
 

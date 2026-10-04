@@ -22,8 +22,11 @@ const DEPTH_LOSE_VIDEO := "res://Assets/Videos/Depth_ending.ogv"
 const WIN_VIDEO := "res://Assets/Videos/Good_ending.ogv"
 const LOSE_SCREEN_TIME := 6.0
 
-# static = survives reload_current_scene(), so the intro only plays on first launch
 static var intro_played := false
+
+const TRANSITION_TIME := 0.12   # per direction, so 0.24s total
+var transition_rect: ColorRect
+var transitioning := false
 
 @onready var views: Array[Node2D] = [
 	catch_screen,
@@ -39,6 +42,7 @@ var skip_frame := false
 
 
 func _ready() -> void:
+	setup_transition()
 	for view in views:
 		view.visible = false
 		view.process_mode = Node.PROCESS_MODE_DISABLED
@@ -75,9 +79,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func start_game() -> void:
 	in_menu = false
-	menu.visible = false
-	menu_ui.visible = false
-	menu.process_mode = Node.PROCESS_MODE_DISABLED
 
 	Global.play_time = 0.0
 	Global.heldFish = false
@@ -85,14 +86,20 @@ func start_game() -> void:
 	Global.fuel = 500
 	Global.depth = Global.depthStart
 	Global.fishCaught.clear()
-	Global.draining = true
 	Global.scene_locked = false
 	skip_frame = true
 
+	await fade_to(enter_game)
+
+	Global.draining = true
+	game_running = true
+
+func enter_game() -> void:
+	menu.visible = false
+	menu_ui.visible = false
+	menu.process_mode = Node.PROCESS_MODE_DISABLED
 	for view in views:
 		view.process_mode = Node.PROCESS_MODE_INHERIT
-
-	game_running = true
 	show_view(0)
 
 
@@ -100,8 +107,8 @@ func _process(delta: float) -> void:
 	if game_over or not game_running:
 		return
 
-	# hold off while a fish is dropping or a jumpscare is playing
-	if Global.scene_locked or Jumpscares.playing:
+	# hold off while things are happening
+	if Global.scene_locked or Jumpscares.playing or transitioning:
 		return
 
 	if Global.fuel >= 1000:
@@ -118,9 +125,10 @@ func _process(delta: float) -> void:
 		skip_frame = false
 		return
 	if Input.is_action_just_pressed("switch_right"):
-		show_view((Global.current + 1) % views.size())
+		fade_to(show_view.bind((Global.current + 1) % views.size()))
 	elif Input.is_action_just_pressed("switch_left"):
-		show_view((Global.current - 1 + views.size()) % views.size())
+		fade_to(show_view.bind((Global.current - 1 + views.size()) % views.size()))
+
 
 
 func show_view(index: int) -> void:
@@ -178,3 +186,34 @@ func lose_oxygen() -> void:
 
 func lose_depth() -> void:
 	end_game(depth_lose_scene, DEPTH_LOSE_VIDEO)
+
+func setup_transition() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 80   # above the game and menu, below videos (90) and jumpscares (100)
+	add_child(layer)
+
+	transition_rect = ColorRect.new()
+	transition_rect.color = Color.BLACK
+	transition_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	transition_rect.modulate.a = 0.0
+	layer.add_child(transition_rect)
+	transition_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
+
+# fades to black, runs `change` while the screen is covered, then fades back
+func fade_to(change: Callable) -> void:
+	if transitioning:
+		return
+	transitioning = true
+
+	var tween := create_tween()
+	tween.tween_property(transition_rect, "modulate:a", 1.0, TRANSITION_TIME)
+	await tween.finished
+
+	change.call()
+
+	tween = create_tween()
+	tween.tween_property(transition_rect, "modulate:a", 0.0, TRANSITION_TIME)
+	await tween.finished
+
+	transitioning = false
