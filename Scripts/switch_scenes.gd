@@ -16,6 +16,9 @@ extends Node2D
 @onready var video_layer: CanvasLayer = $VideoLayer
 @onready var video_player: VideoStreamPlayer = $VideoLayer/VideoPlayer
 
+var skippable_video := false
+var skip_requested := false
+
 const INTRO_VIDEO := "res://Assets/Videos/Starting_animation.ogv"
 const OXYGEN_LOSE_VIDEO := "res://Assets/Videos/Blinking_oxygen_ending.ogv"
 const DEPTH_LOSE_VIDEO := "res://Assets/Videos/Depth_ending.ogv"
@@ -53,17 +56,22 @@ func _ready() -> void:
 	Global.draining = false
 	Global.scene_locked = false
 	Ambience.stop()
+	
 
 	# keep the menu hidden until the intro is done (first launch only)
 	menu.visible = false
 	menu_ui.visible = false
 	if not intro_played:
 		intro_played = true
-		await play_video(INTRO_VIDEO)
+		await play_video(INTRO_VIDEO, true)
 
 	menu.visible = true
 	menu_ui.visible = true
 	in_menu = true
+	
+	if not intro_played:
+		intro_played = true
+		await play_video(INTRO_VIDEO, true)   # <-- added `, true`
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -155,14 +163,21 @@ func show_ending(target: Node2D) -> void:
 		else:
 			push_warning("No node named DeathSound in " + target.name)
 
-func play_video(path: String) -> void:
+func play_video(path: String, skippable := false) -> void:
 	if not ResourceLoader.exists(path):
 		push_warning("Video not found: " + path)
-		return   # skip instead of hanging forever
+		return
 	video_player.stream = load(path)
 	video_layer.visible = true
+	skip_requested = false
+	skippable_video = skippable
 	video_player.play()
-	await video_player.finished
+
+	while video_player.is_playing() and not skip_requested:
+		await get_tree().process_frame
+
+	video_player.stop()
+	skippable_video = false
 	video_layer.visible = false
 
 
@@ -217,3 +232,13 @@ func fade_to(change: Callable) -> void:
 	await tween.finished
 
 	transitioning = false
+
+func _input(event: InputEvent) -> void:
+	if not skippable_video:
+		return
+	var pressed_key = event is InputEventKey and event.pressed and not event.echo
+	var pressed_click = event is InputEventMouseButton and event.pressed
+	if pressed_key or pressed_click:
+		print("skip pressed")
+		skip_requested = true
+		get_viewport().set_input_as_handled()
