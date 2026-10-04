@@ -109,6 +109,7 @@ func make_catch_entry(fish: Node) -> Dictionary:
 
 
 func spawnNewFish():
+<<<<<<< HEAD
 	print("Spawned a fish!")
 	var t := depth_factor()
 	spawnTimer.wait_time = randf_range(
@@ -120,6 +121,10 @@ func spawnNewFish():
 	var body_tex: Texture2D = type_data["bodies"].pick_random()
 	var infected: bool = randf() < INFECTED_CHANCE and not type_data["spots"].is_empty()
 	var spot_tex: Texture2D = type_data["spots"].pick_random() if infected else null
+=======
+	#print("Spawned a fish!")
+	spawnTimer.wait_time = randf_range(1, 2)
+>>>>>>> 57ffde8 (Added door check mechanic)
 
 	var fish = CharacterBody2D.new()
 	fish.z_index = 4
