@@ -19,8 +19,8 @@ const EASTER_EGG_CHANCE := 0.03   # how often the FIN logo fish shows up
 const SPAWN_WAIT_SHALLOW := Vector2(2.0, 3.5)   # seconds between fish (min, max)
 const SPAWN_WAIT_DEEP := Vector2(0.4, 0.9)
 
-const FUEL_SHALLOW := Vector2i(100, 100)   # fuel range for a good fish (min, max)
-const FUEL_DEEP := Vector2i(100, 100)
+const FUEL_SHALLOW := Vector2i(20, 30)   # fuel range for a good fish (min, max)
+const FUEL_DEEP := Vector2i(40, 80)
 var spawnTimer = Timer.new()
 
 # get darker as depth is lower
