@@ -33,10 +33,12 @@ func doorKnock():
 	
 	checkTimer.wait_time = 5
 	checkTimer.paused = false
+	checkTimer.one_shot = false
 	checkTimer.start()
 		
 func jumpScare():
 	Jumpscares.play()
+	checkTimer.stop() 
 	$DoorsceneDoor.material.set_shader_parameter("is_active", false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
