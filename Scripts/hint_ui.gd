@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Sprite2D
 
 @export var show_seconds: float = 10.0
 

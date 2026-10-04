@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bh15pwbu20utg" path="res://Scenes/checkDoor.gd" id="1_87ivu"]
 [ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="1_fim2g"]
-[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="2_87ivu"]
-[ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="3_82n1c"]
 [ext_resource type="Texture2D" uid="uid://bc7282lef2oxf" path="res://Assets/Doorscene_background.PNG" id="4_ia7s0"]
+[ext_resource type="Texture2D" uid="uid://3ndph467ah4r" path="res://Assets/Keys/Arrow_right.PNG" id="5_cea5o"]
 [ext_resource type="Texture2D" uid="uid://btph2vse1ev8e" path="res://Assets/Doorscene_notes.PNG" id="5_hfro5"]
 [ext_resource type="Texture2D" uid="uid://c8hksoojdkuy8" path="res://Assets/Doorscene_door.PNG" id="6_uey2y"]
+[ext_resource type="Texture2D" uid="uid://c7bnn4yhu5ftt" path="res://Assets/Keys/Arrow_left.PNG" id="7_8s56u"]
+[ext_resource type="Texture2D" uid="uid://dr885qyyr4q3x" path="res://Assets/Keys/Key_A.PNG" id="8_6x5nt"]
+[ext_resource type="Texture2D" uid="uid://barh5oltublvy" path="res://Assets/Keys/Key_D.PNG" id="9_3q38g"]
+[ext_resource type="Texture2D" uid="uid://doeybaaadwob" path="res://Assets/Keys/Key_SPACE.PNG" id="10_aptix"]
 
 [node name="OtherScene" type="Node2D" unique_id=409662265]
 script = ExtResource("1_87ivu")
@@ -14,55 +17,6 @@ script = ExtResource("1_87ivu")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2141106499]
 offset_top = -2.0
 offset_bottom = -2.0
-
-[node name="ArrowRight" type="Polygon2D" parent="." unique_id=1645069552]
-z_index = 6
-position = Vector2(1842, 468)
-polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
-script = ExtResource("1_fim2g")
-
-[node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=2128067160]
-position = Vector2(-1803, -2)
-polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
-
-[node name="A" type="Label" parent="ArrowRight/ArrowLeft" unique_id=2146499473]
-offset_left = -31.0
-offset_top = 107.0
-offset_right = 80.0
-offset_bottom = 176.0
-theme_override_fonts/font = ExtResource("2_87ivu")
-theme_override_font_sizes/font_size = 50
-text = "A"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="D" type="Label" parent="ArrowRight" unique_id=642906685]
-offset_left = -43.0
-offset_top = 100.0
-offset_right = 68.0
-offset_bottom = 169.0
-theme_override_fonts/font = ExtResource("2_87ivu")
-theme_override_font_sizes/font_size = 50
-text = "D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Space" type="Label" parent="ArrowRight" unique_id=902269118]
-offset_left = -948.0
-offset_top = 523.0
-offset_right = -807.0
-offset_bottom = 592.0
-theme_override_fonts/font = ExtResource("2_87ivu")
-theme_override_font_sizes/font_size = 50
-text = "Space"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="R" type="Sprite2D" parent="ArrowRight" unique_id=1393417446]
-position = Vector2(-877, 498)
-scale = Vector2(0.23180078, 0.23180076)
-texture = ExtResource("3_82n1c")
 
 [node name="DoorsceneBackground" type="Sprite2D" parent="." unique_id=1382429301]
 position = Vector2(960, 540)
@@ -75,3 +29,26 @@ texture = ExtResource("5_hfro5")
 [node name="DoorsceneDoor" type="Sprite2D" parent="." unique_id=1575427593]
 position = Vector2(960, 540)
 texture = ExtResource("6_uey2y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1565614637]
+position = Vector2(1848, 563.99994)
+scale = Vector2(0.53333336, 0.53333336)
+texture = ExtResource("5_cea5o")
+script = ExtResource("1_fim2g")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D" unique_id=898660927]
+position = Vector2(-3299.9998, 0.00011253357)
+texture = ExtResource("7_8s56u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D2" unique_id=325344464]
+position = Vector2(283.12497, -11.249992)
+texture = ExtResource("8_6x5nt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=1317889455]
+position = Vector2(-268.12497, 0.000120162964)
+texture = ExtResource("9_3q38g")
+
+[node name="KeySpace" type="Sprite2D" parent="Sprite2D" unique_id=653722049]
+position = Vector2(-1651.875, 763.1249)
+scale = Vector2(0.98124987, 0.98124987)
+texture = ExtResource("10_aptix")

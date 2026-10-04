@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://fj1xngav84k7" path="res://Scripts/bioreactor.gd" id="1_fh7p5"]
 [ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="2_ednsk"]
-[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="3_xncym"]
-[ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="4_bbxdo"]
 [ext_resource type="Texture2D" uid="uid://o5pn8keoxxhx" path="res://Assets/BioBackground.PNG" id="5_ajbqo"]
 [ext_resource type="Texture2D" uid="uid://sc74cpvqkoqm" path="res://Assets/BioBG.PNG" id="6_qwok5"]
 [ext_resource type="Texture2D" uid="uid://baxr8umj1epwa" path="res://Assets/BioLiquidBG.PNG" id="7_dpfwn"]
@@ -14,7 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://b2uuffvim1ang" path="res://Assets/BioOutline.PNG" id="11_slch4"]
 [ext_resource type="Texture2D" uid="uid://n8xtxxq3hfq3" path="res://Assets/BioDoor.PNG" id="12_bcney"]
 [ext_resource type="Script" uid="uid://dhxbq58u0lh86" path="res://Scripts/bio_depth.gd" id="12_p8yca"]
+[ext_resource type="Texture2D" uid="uid://3ndph467ah4r" path="res://Assets/Keys/Arrow_right.PNG" id="13_slch4"]
 [ext_resource type="AudioStream" uid="uid://c44j4d4q3kouf" path="res://Assets/Audio/BioSound.mp3" id="14_dpfwn"]
+[ext_resource type="Texture2D" uid="uid://c7bnn4yhu5ftt" path="res://Assets/Keys/Arrow_left.PNG" id="15_bcney"]
+[ext_resource type="Texture2D" uid="uid://dr885qyyr4q3x" path="res://Assets/Keys/Key_A.PNG" id="16_01ofe"]
+[ext_resource type="Texture2D" uid="uid://barh5oltublvy" path="res://Assets/Keys/Key_D.PNG" id="17_86kn1"]
+[ext_resource type="Texture2D" uid="uid://doeybaaadwob" path="res://Assets/Keys/Key_SPACE.PNG" id="18_7diok"]
 
 [sub_resource type="Animation" id="Animation_qwok5"]
 length = 0.001
@@ -95,55 +98,6 @@ offset_bottom = 638.0
 color = Color(0, 0.4745098, 1, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="ArrowRight" type="Polygon2D" parent="." unique_id=858857521]
-z_index = 6
-position = Vector2(1842, 468)
-polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
-script = ExtResource("2_ednsk")
-
-[node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=1957571366]
-position = Vector2(-1803, -2)
-polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
-
-[node name="A" type="Label" parent="ArrowRight/ArrowLeft" unique_id=773056188]
-offset_left = -31.0
-offset_top = 107.0
-offset_right = 80.0
-offset_bottom = 176.0
-theme_override_fonts/font = ExtResource("3_xncym")
-theme_override_font_sizes/font_size = 50
-text = "A"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="D" type="Label" parent="ArrowRight" unique_id=1374613476]
-offset_left = -43.0
-offset_top = 100.0
-offset_right = 68.0
-offset_bottom = 169.0
-theme_override_fonts/font = ExtResource("3_xncym")
-theme_override_font_sizes/font_size = 50
-text = "D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Space" type="Label" parent="ArrowRight" unique_id=1199468663]
-offset_left = -948.0
-offset_top = 523.0
-offset_right = -807.0
-offset_bottom = 592.0
-theme_override_fonts/font = ExtResource("3_xncym")
-theme_override_font_sizes/font_size = 50
-text = "Space"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="R" type="Sprite2D" parent="ArrowRight" unique_id=572470034]
-position = Vector2(-877, 498)
-scale = Vector2(0.23180078, 0.23180076)
-texture = ExtResource("4_bbxdo")
-
 [node name="BioBackground" type="Sprite2D" parent="." unique_id=997004595]
 position = Vector2(960, 540)
 texture = ExtResource("5_ajbqo")
@@ -190,3 +144,26 @@ libraries/ = SubResource("AnimationLibrary_p8yca")
 [node name="BioSound" type="AudioStreamPlayer2D" parent="." unique_id=1087843866]
 stream = ExtResource("14_dpfwn")
 bus = &"SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1777862945]
+position = Vector2(1848, 563.99994)
+scale = Vector2(0.53333336, 0.53333336)
+texture = ExtResource("13_slch4")
+script = ExtResource("2_ednsk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D" unique_id=545771023]
+position = Vector2(-3299.9998, 0.00011253357)
+texture = ExtResource("15_bcney")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D2" unique_id=1467881195]
+position = Vector2(283.12497, -11.249992)
+texture = ExtResource("16_01ofe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=2073932092]
+position = Vector2(-268.12497, 0.000120162964)
+texture = ExtResource("17_86kn1")
+
+[node name="KeySpace" type="Sprite2D" parent="Sprite2D" unique_id=464075004]
+position = Vector2(-1651.875, 763.1249)
+scale = Vector2(0.98124987, 0.98124987)
+texture = ExtResource("18_7diok")

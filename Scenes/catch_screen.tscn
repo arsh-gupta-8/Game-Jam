@@ -8,14 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://cn3qh1cw4eyiq" path="res://Assets/Window_overlay.PNG" id="6_igww2"]
 [ext_resource type="Script" uid="uid://4my02y8t0m5o" path="res://Scripts/depth_meter.gd" id="6_oe6do"]
 [ext_resource type="Script" uid="uid://0xhfl07uhcsi" path="res://Scripts/hint_ui.gd" id="8_igww2"]
-[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="9_1a01m"]
-[ext_resource type="Texture2D" uid="uid://d3g7s1xyjmigq" path="res://Assets/R.png" id="10_emncl"]
+[ext_resource type="Texture2D" uid="uid://3ndph467ah4r" path="res://Assets/Keys/Arrow_right.PNG" id="10_s6nsi"]
 [ext_resource type="Texture2D" uid="uid://dhd3k47lr4m6y" path="res://Assets/Smokescreen.PNG" id="11_1a01m"]
 [ext_resource type="AudioStream" uid="uid://bjocfojo7px1a" path="res://Assets/Audio/CatchSound.mp3" id="11_emncl"]
+[ext_resource type="Texture2D" uid="uid://c7bnn4yhu5ftt" path="res://Assets/Keys/Arrow_left.PNG" id="12_iwevt"]
+[ext_resource type="Texture2D" uid="uid://dr885qyyr4q3x" path="res://Assets/Keys/Key_A.PNG" id="13_ir8pd"]
+[ext_resource type="Texture2D" uid="uid://barh5oltublvy" path="res://Assets/Keys/Key_D.PNG" id="14_g3dpn"]
+[ext_resource type="Texture2D" uid="uid://doeybaaadwob" path="res://Assets/Keys/Key_SPACE.PNG" id="15_4np7c"]
 
 [node name="catch_screen" type="Node2D" unique_id=1950425289]
 script = ExtResource("1_ic414")
-catch_radius = null
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1489143193]
 
@@ -60,55 +62,6 @@ z_index = 8
 position = Vector2(960, 540)
 texture = ExtResource("6_igww2")
 
-[node name="ArrowRight" type="Polygon2D" parent="." unique_id=641977499]
-z_index = 10
-position = Vector2(1842, 468)
-polygon = PackedVector2Array(40, 40, 0, 0, 0, 80)
-script = ExtResource("8_igww2")
-
-[node name="ArrowLeft" type="Polygon2D" parent="ArrowRight" unique_id=1138270024]
-position = Vector2(-1803, -2)
-polygon = PackedVector2Array(0, 40, 40, 0, 40, 80)
-
-[node name="A" type="Label" parent="ArrowRight/ArrowLeft" unique_id=90135724]
-offset_left = -31.0
-offset_top = 107.0
-offset_right = 80.0
-offset_bottom = 176.0
-theme_override_fonts/font = ExtResource("9_1a01m")
-theme_override_font_sizes/font_size = 50
-text = "A"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="D" type="Label" parent="ArrowRight" unique_id=804055570]
-offset_left = -43.0
-offset_top = 100.0
-offset_right = 68.0
-offset_bottom = 169.0
-theme_override_fonts/font = ExtResource("9_1a01m")
-theme_override_font_sizes/font_size = 50
-text = "D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Space" type="Label" parent="ArrowRight" unique_id=609724437]
-offset_left = -948.0
-offset_top = 523.0
-offset_right = -807.0
-offset_bottom = 592.0
-theme_override_fonts/font = ExtResource("9_1a01m")
-theme_override_font_sizes/font_size = 50
-text = "Space"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="R" type="Sprite2D" parent="ArrowRight" unique_id=205396928]
-position = Vector2(-877, 498)
-scale = Vector2(0.23180078, 0.23180076)
-texture = ExtResource("10_emncl")
-
 [node name="CatchSound" type="AudioStreamPlayer2D" parent="." unique_id=1055701262]
 stream = ExtResource("11_emncl")
 
@@ -116,3 +69,27 @@ stream = ExtResource("11_emncl")
 z_index = 6
 position = Vector2(960, 540)
 texture = ExtResource("11_1a01m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=896538419]
+z_index = 10
+position = Vector2(1848, 563.99994)
+scale = Vector2(0.53333336, 0.53333336)
+texture = ExtResource("10_s6nsi")
+script = ExtResource("8_igww2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D" unique_id=1444030096]
+position = Vector2(-3299.9998, 0.00011253357)
+texture = ExtResource("12_iwevt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D2" unique_id=1406841251]
+position = Vector2(283.12497, -11.249992)
+texture = ExtResource("13_ir8pd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=1228389988]
+position = Vector2(-268.12497, 0.000120162964)
+texture = ExtResource("14_g3dpn")
+
+[node name="KeySpace" type="Sprite2D" parent="Sprite2D" unique_id=1364912280]
+position = Vector2(-1651.875, 763.1249)
+scale = Vector2(0.98124987, 0.98124987)
+texture = ExtResource("15_4np7c")
