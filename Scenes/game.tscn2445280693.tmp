@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://7a1xcyv0ikjo"]
+
+[ext_resource type="Script" uid="uid://b686chc6xdthd" path="res://Scripts/switch_scenes.gd" id="1_3dryh"]
+[ext_resource type="PackedScene" uid="uid://dqdr2n42wwf1s" path="res://Scenes/catch_screen.tscn" id="3_v158k"]
+[ext_resource type="PackedScene" uid="uid://46wuoswhp2gk" path="res://Scenes/dispenser_scene.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://2ysjtoirfqo2" path="res://Scenes/bioreactor_scene.tscn" id="5_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://c66xibm37tehp" path="res://Scenes/other_scene.tscn" id="6_v158k"]
+[ext_resource type="PackedScene" uid="uid://bb764aojp2i6a" path="res://Scenes/menu.tscn" id="7_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://b3tnpivhmwplg" path="res://Scenes/lose_scene.tscn" id="8_h4fw4"]
+[ext_resource type="Script" uid="uid://bbo2eow25784t" path="res://Scripts/pause_menu.gd" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://dy04m83cninet" path="res://Scenes/win_scene.tscn" id="9_ldgsr"]
+[ext_resource type="FontFile" uid="uid://bakamp5lra8i8" path="res://Assets/Fonts/Blinker-SemiBold.ttf" id="10_ldgsr"]
+
+[sub_resource type="Gradient" id="Gradient_h4fw4"]
+offsets = PackedFloat32Array(0, 0.52427185, 1)
+colors = PackedColorArray(0, 0, 0, 0.03137255, 0, 0, 0, 0, 0.050980393, 0, 0, 0.45490196)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2pfo5"]
+gradient = SubResource("Gradient_h4fw4")
+width = 512
+height = 288
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_h4fw4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Edges:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.7019608)]
+}
+
+[sub_resource type="Animation" id="Animation_ldgsr"]
+resource_name = "pulse"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Edges:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.7019608), Color(1, 1, 1, 1), Color(1, 1, 1, 0.7019608)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5yvi"]
+_data = {
+&"RESET": SubResource("Animation_h4fw4"),
+&"pulse": SubResource("Animation_ldgsr")
+}
+
+[node name="Game" type="Node2D" unique_id=377177155]
+script = ExtResource("1_3dryh")
+
+[node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("3_v158k")]
+
+[node name="DispenserScene" parent="." unique_id=409662265 instance=ExtResource("3_wrm1d")]
+
+[node name="BioreactorScene" parent="." unique_id=1788749412 instance=ExtResource("5_1l0tm")]
+
+[node name="OtherScene" parent="." unique_id=1648236018 instance=ExtResource("6_v158k")]
+script = null
+
+[node name="LoseScene" parent="." unique_id=2103556309 instance=ExtResource("8_h4fw4")]
+
+[node name="WinScene" parent="." unique_id=810444533 instance=ExtResource("9_ldgsr")]
+
+[node name="Menu" parent="." unique_id=1044301759 instance=ExtResource("7_h4fw4")]
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=2041336277]
+process_mode = 3
+layer = 10
+visible = false
+script = ExtResource("9_h4fw4")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=365607558]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1488185631]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = -311.0
+offset_right = 388.78003
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused" type="Label" parent="PauseMenu/VBoxContainer" unique_id=1500272637]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=327039565]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
+theme_override_font_sizes/font_size = 100
+text = "Resume"
+
+[node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1840850999]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
+theme_override_font_sizes/font_size = 100
+text = "Menu"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=1043289901]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ldgsr")
+theme_override_font_sizes/font_size = 100
+text = "Quit"
+
+[node name="Vignette" type="CanvasLayer" parent="." unique_id=1988027125]
+layer = 5
+
+[node name="Tint" type="ColorRect" parent="Vignette" unique_id=95160692]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0.09803922, 0.101960786, 0.14509805)
+
+[node name="Edges" type="TextureRect" parent="Vignette" unique_id=1897408997]
+modulate = Color(1, 1, 1, 0.7019608)
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_2pfo5")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Vignette" unique_id=861052712]
+libraries/ = SubResource("AnimationLibrary_o5yvi")
+autoplay = &"pulse"
