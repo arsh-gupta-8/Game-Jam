@@ -1,6 +1,7 @@
 extends Node2D
 
-var speed = 250
+const SPEED_MIN := 150.0   # slowest fish
+const SPEED_MAX := 400.0   # fastest fish
 var catchCDLength: int = 1
 var catchCD: Timer = Timer.new()
 
@@ -156,7 +157,8 @@ func spawnNewFish():
 		fishBody.add_child(spot)
 	fish.global_position = spawnPos
 
-	var setVelocity = directionVector.normalized() * speed
+	var fish_speed := randf_range(SPEED_MIN, SPEED_MAX)
+	var setVelocity = directionVector.normalized() * fish_speed
 	fish.velocity = setVelocity
 
 

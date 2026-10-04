@@ -65,6 +65,7 @@ _data = {
 script = ExtResource("1_3dryh")
 
 [node name="catch_screen" parent="." unique_id=1950425289 instance=ExtResource("3_v158k")]
+catch_radius = 500.0
 
 [node name="DispenserScene" parent="." unique_id=409662265 instance=ExtResource("3_wrm1d")]
 
