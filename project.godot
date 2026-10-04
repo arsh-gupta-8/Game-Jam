@@ -14,9 +14,14 @@ config/name="Game-Jam"
 run/main_scene="uid://7a1xcyv0ikjo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://djug31mrjbwgt"
+
 [autoload]
 
 Global="*uid://bay272a6kitug"
+Music="*uid://dep17w4m0rcbn"
 
 [display]
 

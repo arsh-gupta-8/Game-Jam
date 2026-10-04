@@ -94,3 +94,5 @@ vertical_alignment = 1
 position = Vector2(-877, 498)
 scale = Vector2(0.23180078, 0.23180076)
 texture = ExtResource("10_emncl")
+
+[node name="CatchSound" type="AudioStreamPlayer2D" parent="." unique_id=1055701262]

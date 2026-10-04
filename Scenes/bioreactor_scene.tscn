@@ -13,6 +13,68 @@
 [ext_resource type="Texture2D" uid="uid://du1v3tv10b3a3" path="res://Assets/BioWaste.PNG" id="10_7cacx"]
 [ext_resource type="Texture2D" uid="uid://b2uuffvim1ang" path="res://Assets/BioOutline.PNG" id="11_slch4"]
 [ext_resource type="Texture2D" uid="uid://n8xtxxq3hfq3" path="res://Assets/BioDoor.PNG" id="12_bcney"]
+[ext_resource type="AudioStream" uid="uid://c44j4d4q3kouf" path="res://Assets/Audio/BioSound.mp3" id="14_dpfwn"]
+
+[sub_resource type="Animation" id="Animation_qwok5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BioDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BioWaste:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+
+[sub_resource type="Animation" id="Animation_dpfwn"]
+resource_name = "putwastein"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BioDoor:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(1143.895, 540), Vector2(960, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BioWaste:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(960, 818.31)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p8yca"]
+_data = {
+&"RESET": SubResource("Animation_qwok5"),
+&"putwastein": SubResource("Animation_dpfwn")
+}
 
 [node name="BioreactorScene" type="Node2D" unique_id=1788749412]
 script = ExtResource("1_fh7p5")
@@ -85,17 +147,13 @@ texture = ExtResource("4_bbxdo")
 position = Vector2(960, 540)
 texture = ExtResource("5_ajbqo")
 
-[node name="BioWasteBG" type="Sprite2D" parent="." unique_id=490281601]
-position = Vector2(960, 540)
-texture = ExtResource("6_qwok5")
-
 [node name="BioDepth" type="Sprite2D" parent="." unique_id=468013175]
 position = Vector2(957, 550)
 texture = ExtResource("7_dpfwn")
 
 [node name="BioLiquid" type="Sprite2D" parent="." unique_id=1621625764]
 modulate = Color(0.41568628, 0.92941177, 0.9764706, 1)
-position = Vector2(960, 1426.57)
+position = Vector2(960, 1427)
 texture = ExtResource("8_p8yca")
 script = ExtResource("9_qwok5")
 
@@ -103,9 +161,18 @@ script = ExtResource("9_qwok5")
 position = Vector2(960, 540)
 texture = ExtResource("9_jhgdl")
 
+[node name="BioWasteBG" type="Sprite2D" parent="." unique_id=490281601]
+position = Vector2(960, 540)
+texture = ExtResource("6_qwok5")
+
 [node name="BioWaste" type="Sprite2D" parent="." unique_id=371005455]
 position = Vector2(960, 540)
 texture = ExtResource("10_7cacx")
+
+[node name="BioWasteBG2" type="Sprite2D" parent="." unique_id=801160615]
+position = Vector2(2209, 1458)
+rotation = -1.5977279
+texture = ExtResource("6_qwok5")
 
 [node name="BioOutline" type="Sprite2D" parent="." unique_id=548902290]
 position = Vector2(960, 540)
@@ -114,3 +181,10 @@ texture = ExtResource("11_slch4")
 [node name="BioDoor" type="Sprite2D" parent="." unique_id=1061095465]
 position = Vector2(960, 540)
 texture = ExtResource("12_bcney")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=136069656]
+libraries/ = SubResource("AnimationLibrary_p8yca")
+
+[node name="BioSound" type="AudioStreamPlayer2D" parent="." unique_id=1087843866]
+stream = ExtResource("14_dpfwn")
+bus = &"SFX"
