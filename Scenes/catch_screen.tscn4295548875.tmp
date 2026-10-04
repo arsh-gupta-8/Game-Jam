@@ -32,7 +32,6 @@ scale = Vector2(0.7499999, 0.74999994)
 texture = ExtResource("2_gbr0b")
 
 [node name="DarkTint" type="ColorRect" parent="." unique_id=267361268]
-z_index = 5
 offset_left = 6.1035156e-05
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -40,14 +39,11 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.45882353)
 
 [node name="FuelBar" type="Sprite2D" parent="." unique_id=708037503]
-z_index = 5
 position = Vector2(957, 538)
 texture = ExtResource("3_oe6do")
 script = ExtResource("4_v6mme")
 
 [node name="DepthBar" type="Sprite2D" parent="." unique_id=298730550]
-modulate = Color(0.13725491, 0, 0.05490196, 1)
-z_index = 5
 position = Vector2(960, 686.695)
 texture = ExtResource("5_755dy")
 script = ExtResource("6_oe6do")

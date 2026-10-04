@@ -10,6 +10,12 @@ var catch_center: Vector2
 var allFish: Array[Resource] = []
 var spawnTimer = Timer.new()
 
+# get darker as depth is lower
+const START_DEPTH := 1000     # depth where it's fully bright
+const DARK_DEPTH := 0   # depth where it's at its darkest
+const MAX_DARKNESS := 0.85   # 1.0 would be pure black
+@onready var dark_tint: ColorRect = $DarkTint
+
 func _ready() -> void:
 	get_all_assets_in_folder("res://Assets/Fish/")
 	spawnTimer.autostart = true
@@ -81,3 +87,7 @@ func _process(delta: float) -> void:
 		if caught_any:
 			catchCD.start()
 		print(Global.fishCaught)
+	
+	# get darker as depth is lower
+	var t := clampf(inverse_lerp(START_DEPTH, DARK_DEPTH, Global.depth), 0.0, 1.0)
+	dark_tint.color.a = t * MAX_DARKNESS
