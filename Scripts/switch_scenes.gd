@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var menu: Node2D = $Menu
+@onready var menu_ui: CanvasLayer = $Menu/MenuUI
 @onready var win_scene: Node2D = $WinScene
 @onready var lose_scene: Node2D = $LoseScene
 
@@ -8,6 +9,8 @@ extends Node2D
 @onready var dispenser_scene: Node2D = $DispenserScene
 @onready var bioreactor_scene: Node2D = $BioreactorScene
 @onready var other_scene: Node2D = $OtherScene
+
+#@onready var menu_ui: CanvasLayer = find_canvas_layer(menu)
 
 @onready var views: Array[Node2D] = [
 	catch_screen,
@@ -32,6 +35,8 @@ func _ready() -> void:
 	Global.draining = false
 	Ambience.stop()
 	Global.scene_locked = false
+	menu_ui.visible = true
+
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -56,6 +61,7 @@ func start_game() -> void:
 	in_menu = false
 	skip_frame = true
 	menu.visible = false
+	menu_ui.visible = false
 	menu.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	for view in views:
